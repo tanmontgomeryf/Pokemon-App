@@ -1,5 +1,7 @@
 const express = require('express');
 const axios = require('axios');
+const User = require('../../models/User');
+const auth = require('../../middleware/auth');
 const router = express.Router();
 
 //get full pokemon list(pokedex)
@@ -149,6 +151,35 @@ router.get('/:pokemon_id', async (req, res) => {
       levelUpMoves,
       evolutionChain: evolutionArr,
     });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: 'Server Error' });
+  }
+});
+
+//add pokemon to user team
+router.post('/:pokemon_id', auth, async (req, res) => {
+  const { pokemonname } = req.body;
+  const { pokemon_id } = req.params;
+  try {
+    const user = await User.findById(req.user.id);
+
+    if (!user) return res.status(401).send('Invalid credentials');
+
+    if (user.pokemonTeam.length >= 6)
+      return res.status(422).send('Your team is full!');
+
+    const updatePokemonTeam = await User.findByIdAndUpdate(
+      req.user.id,
+      {
+        $push: {
+          pokemonTeam: { pokemonname, nickname: pokemonname, id: pokemon_id },
+        },
+      },
+      { new: true }
+    );
+
+    res.send(updatePokemonTeam);
   } catch (error) {
     console.log(error);
     res.status(500).json({ msg: 'Server Error' });
