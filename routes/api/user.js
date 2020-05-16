@@ -13,8 +13,8 @@ router.get('/', async (req, res) => {
     const users = await User.find({}, '-password');
     res.send(users);
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ msg: 'Server Error' });
+    console.error(error.message);
+    res.status(500).json({ msg: 'Server Error', err: error.message });
   }
 });
 
@@ -64,7 +64,7 @@ router.post(
         }
       );
     } catch (error) {
-      console.error(error);
+      console.error(error.message);
 
       if (error.keyPattern.username)
         return res.status(500).send('Username has been taken');
@@ -72,7 +72,7 @@ router.post(
       if (error.keyPattern.email)
         return res.status(500).send('Email has been taken');
 
-      res.status(500).send('Server error');
+      res.status(500).json({ msg: 'Server Error', err: error.message });
     }
   }
 );
@@ -88,8 +88,8 @@ router.delete('/:user_id', auth, async (req, res) => {
 
     res.send('User deleted');
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ msg: 'Server Error' });
+    console.error(error.message);
+    res.status(500).json({ msg: 'Server Error', err: error.message });
   }
 });
 
@@ -121,8 +121,8 @@ router.put(
 
       res.send(updatePokemonTeam);
     } catch (error) {
-      console.log(error);
-      res.status(500).json({ msg: 'Server Error' });
+      console.error(error.message);
+      res.status(500).json({ msg: 'Server Error', err: error.message });
     }
   }
 );
@@ -145,8 +145,8 @@ router.delete('/pokemon/:id', auth, async (req, res) => {
 
     res.send(updatedPokemonTeam);
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ msg: 'Server Error' });
+    console.error(error.message);
+    res.status(500).json({ msg: 'Server Error', err: error.message });
   }
 });
 

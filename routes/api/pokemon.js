@@ -17,8 +17,8 @@ router.get('/pokedex/:num?', async (req, res) => {
     }));
     res.send(data);
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ msg: 'Server Error' });
+    console.error(error.message);
+    res.status(500).json({ msg: 'Server Error', err: error.message });
   }
 });
 
@@ -152,8 +152,8 @@ router.get('/:pokemon_id', async (req, res) => {
       evolutionChain: evolutionArr,
     });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ msg: 'Server Error' });
+    console.error(error.message);
+    res.status(500).json({ msg: 'Server Error', err: error.message });
   }
 });
 
@@ -181,8 +181,8 @@ router.post('/:pokemon_id', auth, async (req, res) => {
 
     res.send(updatePokemonTeam);
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ msg: 'Server Error' });
+    console.error(error.message);
+    res.status(500).json({ msg: 'Server Error', err: error.message });
   }
 });
 
