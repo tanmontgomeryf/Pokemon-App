@@ -8,6 +8,11 @@ const PokedexItem = ({ pokemon: { name, id } }) => {
         <img
           src={`https://img.pokemondb.net/sprites/home/normal/${name}.png`}
           alt={name}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src =
+              'https://cdn.bulbagarden.net/upload/a/a1/Substitute_artwork.png';
+          }}
         />
         <h4>{name}</h4>
         <p>{id}</p>

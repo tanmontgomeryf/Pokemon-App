@@ -32,131 +32,33 @@ router.get('/:pokemon_id_name', async (req, res) => {
     );
 
     //destructure data
-    const {
-      abilities,
-      id,
-      name,
-      stats,
-      types,
-      weight,
-      height,
-      species,
-    } = pokemonById.data;
-
-    //pad ID with zeros
-    const padZeros = (number, num) => {
-      return number <= 999 ? `00${number}`.slice(num) : number;
-    };
-
-    //add periods to height and weight
-    const addPeriod = (num) => {
-      const str = padZeros(num, -2).toString();
-      const strArr = str.split('');
-      strArr.splice(strArr.length - 1, 0, '.');
-      return strArr.join('');
-    };
-
-    //get stats data
-    const cleanStats = stats
-      .map((stat) => ({
-        name: stat.stat.name,
-        baseStat: stat.base_stat,
-      }))
-      .reverse();
-
-    cleanStats.push({
-      name: 'total',
-      baseStat: cleanStats.reduce(
-        (accumulator, currentValue) => accumulator + currentValue.baseStat,
-        0
-      ),
-    });
+    const { abilities, species } = pokemonById.data;
 
     //fetch nested data
     const promises = [];
-
     promises.push(axios.get(species.url));
-
     abilities.map((ability) => {
       promises.push(axios.get(ability.ability.url));
     });
-
     const allPromises = await axios.all(promises);
+    const allPromisesdata = allPromises.map((data) => data.data);
 
     //get species description
-    const speciesDescription = allPromises[0].data.flavor_text_entries;
+    const speciesDescription = allPromisesdata[0].flavor_text_entries;
 
-    const ORASDescription = speciesDescription
-      .filter(
-        (description) =>
-          (description.language.name === 'en' &&
-            description.version.name === 'alpha-sapphire') ||
-          (description.language.name === 'en' &&
-            description.version.name === 'omega-ruby')
-      )
-      .map((description) => ({
-        version: description.version.name,
-        description: description.flavor_text,
-      }));
+    //get description
+    const fetchedAbilityDescription = allPromisesdata.splice(1);
 
     //fetch evolution chain
     const evolutionChain = await axios.get(
       allPromises[0].data.evolution_chain.url
     );
 
-    const evolutionArr = [];
-
-    //function to get evolution chain
-    const getEvolution = (obj) => {
-      if (obj.species === undefined) return null;
-
-      evolutionArr.push({
-        name: obj.species.name,
-        id: padZeros(parseInt(obj.species.url.split('/')[6]), -3),
-      });
-
-      if (obj.evolves_to.length === 1) getEvolution(obj.evolves_to[0]);
-
-      if (obj.evolves_to.length > 1)
-        obj.evolves_to.map((evo) => getEvolution(evo));
-
-      if (obj.evolves_to.length <= 0) return null;
-    };
-
-    getEvolution(evolutionChain.data.chain);
-
-    //get abilities and description
-    const fetchAbilityDescription = allPromises.splice(1);
-
-    //get description
-    const Abilitydescriptions = fetchAbilityDescription.map((data) => ({
-      description: data.data.effect_entries[0].short_effect,
-    }));
-    //clean abilities data
-    const cleanAbilities = abilities.map((ability) => ({
-      ability: ability.ability.name,
-      is_hidden: ability.is_hidden,
-    }));
-    //initialize final ability data
-    const finalAbility = [];
-
-    //group abilitydescriptions to clean ability data
-    for (let i = 0; i < cleanAbilities.length; i++) {
-      finalAbility.push({ ...cleanAbilities[i], ...Abilitydescriptions[i] });
-    }
-
-    //send data
     res.send({
-      name,
-      id,
-      padID: padZeros(id, -3),
-      weight: `${addPeriod(weight)} kg`,
-      height: `${addPeriod(height)} m`,
-      description: ORASDescription,
-      abilities: finalAbility.reverse(),
-      types,
-      totalPokeStats: cleanStats,
-      evolutionChain: evolutionArr,
+      ...pokemonById.data,
+      description: speciesDescription,
+      abilityDescriptions: fetchedAbilityDescription,
+      evolutionChain: evolutionChain.data,
     });
   } catch (error) {
     console.error(error);

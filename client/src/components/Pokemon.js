@@ -20,16 +20,18 @@ const Pokemon = ({
 
   const handleClick = () => goBack();
 
+  const { description, evolutionChain, stats } = pokemon;
+
   return loading || pokemon.loading ? (
     <h1>Loading...</h1>
   ) : (
     <Fragment>
-      <button onClick={handleClick}>Go Back</button>
       <h1>National Pokedex</h1>
+      <button onClick={handleClick}>Go Back</button>
       <PokemonMain pokemon={pokemon} />
-      <PokemonDescription description={pokemon.description} />
-      <PokemonBaseStats totalPokeStats={pokemon.totalPokeStats} />
-      <PokemonEvoChain evolutionChain={pokemon.evolutionChain} id={id} />
+      <PokemonDescription description={description} />
+      <PokemonBaseStats stats={stats} />
+      <PokemonEvoChain evolutionChain={evolutionChain} id={id} />
     </Fragment>
   );
 };

@@ -29,7 +29,7 @@ const pokemonReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        pokemon: { ...state.pokemon, loading: true },
+        pokemon: { loading: true },
       };
     case FETCH_POKEMON_SUCCESS:
       return {
