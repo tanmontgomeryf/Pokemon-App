@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import { useDispatch } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 
 import Pokedex from './components/Pokedex';
 import Pokemon from './components/Pokemon';
+import Navbar from './components/Navbar';
+import Landing from './components/Landing';
 import { fetchPokedex } from './redux';
 
 import './App.css';
@@ -14,10 +16,14 @@ const App = () => {
     dispatch(fetchPokedex());
   }, [dispatch]);
   return (
-    <Switch>
-      <Route exact path='/pokedex' render={() => <Pokedex />} />
-      <Route exact path='/:id' render={(props) => <Pokemon {...props} />} />
-    </Switch>
+    <Fragment>
+      <Navbar />
+      <Switch>
+        <Route exact path='/' render={() => <Landing />} />
+        <Route exact path='/pokedex' render={() => <Pokedex />} />
+        <Route exact path='/:id' render={(props) => <Pokemon {...props} />} />
+      </Switch>
+    </Fragment>
   );
 };
 
