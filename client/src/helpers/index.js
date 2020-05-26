@@ -93,3 +93,22 @@ export const cleanAbilities = (abilities, abilityDescriptions) => {
 
   return finalAbility;
 };
+
+export const checkPokemon = (str) => {
+  if (str === 'minior-red-meteor') return 'minior';
+  if (str === 'mimikyu-disguised') return 'mimikyu';
+  if (str === 'deoxys-normal') return 'deoxys';
+  return str;
+};
+
+export const checkRequestPokemon = (str) => {
+  if (str === 'deoxys') return 'deoxys-normal';
+  if (str === 'mimikyu') return 'mimikyu-disguised';
+  if (str === 'minior') return 'minior-red-meteor';
+  return str;
+};
+
+export const addDefaultTeam = (arr) => {
+  const newArr = arr.concat([...Array(6).fill({ defaultPokemon: true })]);
+  return newArr.splice(0, 6);
+};

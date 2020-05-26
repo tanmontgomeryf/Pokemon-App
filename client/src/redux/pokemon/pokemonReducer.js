@@ -10,11 +10,9 @@ import {
 
 const initialState = {
   loading: true,
-  pokedex: [],
-  pokemon: {
-    loading: true,
-  },
-  error: '',
+  pokedex: null,
+  pokemon: null,
+  error: null,
 };
 
 const pokemonReducer = (state = initialState, action) => {
@@ -24,18 +22,20 @@ const pokemonReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        error: null,
       };
     case FETCH_POKEMON_REQUEST:
       return {
         ...state,
         loading: true,
-        pokemon: { loading: true },
+        pokemon: null,
+        error: null,
       };
     case FETCH_POKEMON_SUCCESS:
       return {
         ...state,
         loading: false,
-        pokemon: { ...state.pokemon, loading: false, ...payload },
+        pokemon: payload,
       };
     case FETCH_POKEDEX_SUCCESS:
       return {

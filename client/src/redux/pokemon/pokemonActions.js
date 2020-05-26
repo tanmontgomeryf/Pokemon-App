@@ -63,10 +63,10 @@ export const fetchMorePokedex = (num) => async (dispatch) => {
   }
 };
 
-export const fetchPokemon = (id) => async (dispatch) => {
+export const fetchPokemon = (idOrName) => async (dispatch) => {
   dispatch(fetchPokemonRequest());
   try {
-    const response = await axios.get(`/pokemon/${id}`);
+    const response = await axios.get(`/pokemon/${idOrName}`);
     dispatch(fetchPokemonSuccess(response.data));
   } catch (error) {
     console.log(error);

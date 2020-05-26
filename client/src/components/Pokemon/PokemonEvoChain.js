@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { padZeros, cleanEvolutionChain } from '../helpers';
+import { padZeros, cleanEvolutionChain, checkPokemon } from '../../helpers';
 
 const PokemonEvoChain = ({ evolutionChain: { chain }, id }) => {
   return (
@@ -9,8 +9,10 @@ const PokemonEvoChain = ({ evolutionChain: { chain }, id }) => {
       {cleanEvolutionChain(chain).map((evo) => (
         <Link key={evo.id} to={`/${evo.id}`}>
           <img
-            src={`https://img.pokemondb.net/sprites/home/normal/${evo.name}.png`}
-            alt={evo.name}
+            src={`https://img.pokemondb.net/sprites/home/normal/${checkPokemon(
+              evo.name
+            )}.png`}
+            alt={checkPokemon(evo.name)}
             onError={(e) => {
               e.target.onerror = null;
               e.target.src =
@@ -18,7 +20,7 @@ const PokemonEvoChain = ({ evolutionChain: { chain }, id }) => {
             }}
           />
           <p>
-            {evo.name} #{evo.id ? padZeros(evo.id, -3) : id}
+            {checkPokemon(evo.name)} #{evo.id ? padZeros(evo.id, -3) : id}
           </p>
         </Link>
       ))}

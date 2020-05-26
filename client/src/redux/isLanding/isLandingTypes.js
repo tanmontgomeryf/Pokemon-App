@@ -1,0 +1,2 @@
+export const NOT_LANDING_PAGE = 'NOT_LANDING_PAGE';
+export const IN_LANDING_PAGE = 'IN_LANDING_PAGE';

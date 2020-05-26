@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { cleanDescription } from '../helpers';
+import { cleanDescription } from '../../helpers';
 
 const PokemonDescription = ({ description }) => {
   return (
@@ -8,7 +8,7 @@ const PokemonDescription = ({ description }) => {
         cleanDescription(description, 'alpha-sapphire', 'omega-ruby').map(
           (description) => (
             <div key={description.version}>
-              <h4>{description.version}</h4>
+              <h4>{description.version.replace(/-/g, ' ')}</h4>
               <p>{description.description}</p>
             </div>
           )

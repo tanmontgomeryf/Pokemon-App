@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { totalBaseStats } from '../helpers';
+import { totalBaseStats } from '../../helpers';
 
 const PokemonBaseStats = ({ stats }) => {
   return (
