@@ -22,7 +22,6 @@ router.get('/', async (req, res) => {
 router.post(
   '/',
   [
-    auth,
     check('username').notEmpty().escape(),
     check('email').notEmpty().isEmail().normalizeEmail(),
     check('password').notEmpty().isLength({ min: 6 }),
@@ -32,7 +31,7 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     }
-
+    console.log(req.body);
     const { username, email, password } = req.body;
 
     try {
@@ -77,6 +76,73 @@ router.post(
   }
 );
 
+//logout user
+router.get('/logout', auth, async (req, res) => {
+  try {
+    const options = {
+      maxAge: -1,
+      httpOnly: true,
+      signed: true,
+    };
+    res.cookie('token', 'logout', options);
+    res.send('Successfully logged out');
+  } catch (error) {
+    res.status(500).json({ msg: 'Server Error', err: error.message });
+  }
+});
+
+//get user
+router.get('/:user_id', async (req, res) => {
+  const { user_id } = req.params;
+  try {
+    const user = await User.findById(user_id, '-password');
+
+    if (!user) return res.status(404).send({ msg: 'User not found' });
+
+    res.json(user);
+  } catch (error) {
+    console.error(error.message);
+    console.log(error);
+    res.status(500).json({ msg: 'Server Error', err: error.message });
+  }
+});
+
+//add pokemon to user team
+router.post('/:user_id', auth, async (req, res) => {
+  const { pokemonDetails, id } = req.body;
+  const { user_id } = req.params;
+  try {
+    if (user_id !== req.user.id)
+      return res.status(422).send('Not authorize to take that action');
+
+    const user = await User.findById(user_id);
+
+    if (!user) return res.status(401).send('Invalid credentials');
+
+    if (user.pokemonTeam.length >= 6)
+      return res.status(422).send('Your team is full!');
+
+    const updatePokemonTeam = await User.findByIdAndUpdate(
+      user_id,
+      {
+        $push: {
+          pokemonTeam: {
+            pokemonDetails,
+            nickname: pokemonDetails.name,
+            id,
+          },
+        },
+      },
+      { new: true }
+    );
+
+    res.send(updatePokemonTeam.pokemonTeam);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ msg: 'Server Error', err: error.message });
+  }
+});
+
 //delete user
 router.delete('/:user_id', auth, async (req, res) => {
   const { user_id } = req.params;
@@ -93,9 +159,9 @@ router.delete('/:user_id', auth, async (req, res) => {
   }
 });
 
-//add a pokemon to your team
+//put nickname on your pokemon
 router.put(
-  '/pokemon/:id',
+  '/:user_id/pokemon/:id',
   [auth, check('nickname').escape()],
   async (req, res) => {
     const errors = validationResult(req);
@@ -103,9 +169,12 @@ router.put(
       return res.status(422).json({ errors: errors.array() });
     }
     const { nickname } = req.body;
-    const { id } = req.params;
+    const { user_id, id } = req.params;
     try {
-      const user = await User.findById(req.user.id);
+      if (user_id !== req.user.id)
+        return res.status(422).send('Not authorize to take that action');
+
+      const user = await User.findById(user_id);
 
       if (!user) return res.status(401).send('Invalid Account');
 
@@ -119,7 +188,7 @@ router.put(
         { new: true }
       );
 
-      res.send(updatePokemonTeam);
+      res.send(updatePokemonTeam.pokemonTeam);
     } catch (error) {
       console.error(error.message);
       res.status(500).json({ msg: 'Server Error', err: error.message });
@@ -128,10 +197,13 @@ router.put(
 );
 
 //delete a pokemon in your team
-router.delete('/pokemon/:id', auth, async (req, res) => {
-  const { id } = req.params;
+router.delete('/:user_id/pokemon/:id', auth, async (req, res) => {
+  const { user_id, id } = req.params;
   try {
-    const user = await User.findById(req.user.id);
+    if (user_id !== req.user.id)
+      return res.status(422).send('Not authorize to take that action');
+
+    const user = await User.findById(user_id);
 
     if (!user) return res.status(401).send('Invalid Account');
 
@@ -143,7 +215,7 @@ router.delete('/pokemon/:id', auth, async (req, res) => {
       { new: true }
     );
 
-    res.send(updatedPokemonTeam);
+    res.send(updatedPokemonTeam.pokemonTeam);
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ msg: 'Server Error', err: error.message });

@@ -4,6 +4,7 @@ import {
   addPeriod,
   cleanAbilities,
   checkPokemon,
+  checkPokemonForLink,
 } from '../../helpers';
 
 const PokemonMain = ({
@@ -12,7 +13,7 @@ const PokemonMain = ({
   return (
     <div className='PokemonMain'>
       <img
-        src={`https://img.pokemondb.net/artwork/large/${checkPokemon(
+        src={`https://img.pokemondb.net/artwork/large/${checkPokemonForLink(
           name
         )}.jpg`}
         alt={checkPokemon(name)}

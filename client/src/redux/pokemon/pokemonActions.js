@@ -7,7 +7,11 @@ import {
   FETCH_MORE_POKEDEX_SUCCESS,
   FETCH_POKEMON_REQUEST,
   REMOVE_EXTRA_POKEMON,
+  FETCH_GENERATION,
+  FETCH_GENERATION_SUCCESS,
+  FETCH_GENERATION_ERROR,
 } from './pokemonTypes';
+import { checkGen } from '../../helpers';
 
 const fetchRequest = () => ({
   type: FETCH_REQUEST,
@@ -41,6 +45,20 @@ const fetchFailure = (error) => ({
   payload: error,
 });
 
+const fetchingGenerationData = () => ({
+  type: FETCH_GENERATION,
+});
+
+const fetchGenerationSuccess = (data) => ({
+  type: FETCH_GENERATION_SUCCESS,
+  payload: data,
+});
+
+const fetchGenerationError = (error) => ({
+  type: FETCH_GENERATION_ERROR,
+  payload: error,
+});
+
 export const fetchPokedex = () => async (dispatch) => {
   dispatch(fetchRequest());
   try {
@@ -71,5 +89,18 @@ export const fetchPokemon = (idOrName) => async (dispatch) => {
   } catch (error) {
     console.log(error);
     dispatch(fetchFailure(error.message));
+  }
+};
+
+export const fetchGenerationData = (str) => async (dispatch) => {
+  dispatch(fetchingGenerationData());
+  const gen = checkGen(str);
+  try {
+    const response = await axios.get(
+      `/pokemon/pokedex/${gen.num}/${gen.limit}`
+    );
+    dispatch(fetchGenerationSuccess(response.data));
+  } catch (error) {
+    dispatch(fetchGenerationError(error));
   }
 };

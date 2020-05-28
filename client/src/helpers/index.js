@@ -95,6 +95,31 @@ export const cleanAbilities = (abilities, abilityDescriptions) => {
 };
 
 export const checkPokemon = (str) => {
+  if (str === 'farfetchd') return "farfetch'd";
+  if (str === 'nidoran-m') return 'nidoran ♂️';
+  if (str === 'nidoran-f') return 'nidoran ♀';
+  if (str === 'mr-mime') return 'mr. mime';
+  if (str === 'wormadam-plant') return 'wormadam';
+  if (str === 'giratina-altered') return 'giratina';
+  if (str === 'shaymin-land') return 'shaymin';
+  if (str === 'basculin-red-striped') return 'basculin';
+  if (str === 'darmanitan-standard') return 'darmanitan';
+  if (str === 'minior-red-meteor') return 'minior';
+  if (str === 'mimikyu-disguised') return 'mimikyu';
+  if (str === 'deoxys-normal') return 'deoxys';
+  if (str === 'meloetta-aria') return 'meloetta';
+  if (str === 'keldeo-ordinary') return 'keldeo';
+  if (str === 'landorus-incarnate') return 'landorus';
+  if (str === 'tornadus-incarnate') return 'tornadus';
+  if (str === 'thundurus-incarnate') return 'thundurus';
+  if (str === 'meowstic-male') return 'meowstic';
+  if (str === 'gourgeist-average') return 'gourgeist';
+  if (str === 'pumpkaboo-average') return 'pumpkaboo';
+  if (str === 'wishiwashi-solo') return 'wishiwashi';
+  return str;
+};
+
+export const checkPokemonForLink = (str) => {
   if (str === 'minior-red-meteor') return 'minior';
   if (str === 'mimikyu-disguised') return 'mimikyu';
   if (str === 'deoxys-normal') return 'deoxys';
@@ -105,10 +130,27 @@ export const checkRequestPokemon = (str) => {
   if (str === 'deoxys') return 'deoxys-normal';
   if (str === 'mimikyu') return 'mimikyu-disguised';
   if (str === 'minior') return 'minior-red-meteor';
+  if (str === 'mr. mime') return 'mr-mime';
+  if (str === 'wormadam') return 'wormadam-plant';
+  if (str === 'giratina') return 'giratina-altered';
+  if (str === 'shaymin') return 'shaymin-land';
   return str;
 };
 
 export const addDefaultTeam = (arr) => {
   const newArr = arr.concat([...Array(6).fill({ defaultPokemon: true })]);
   return newArr.splice(0, 6);
+};
+
+export const checkGen = (str) => {
+  let result;
+  if (str === 'gen1') result = { num: 0, limit: 151 };
+  if (str === 'gen2') result = { num: 151, limit: 100 };
+  if (str === 'gen3') result = { num: 251, limit: 135 };
+  if (str === 'gen4') result = { num: 386, limit: 107 };
+  if (str === 'gen5') result = { num: 493, limit: 156 };
+  if (str === 'gen6') result = { num: 649, limit: 72 };
+  if (str === 'gen7') result = { num: 721, limit: 86 };
+  if (str === 'allGen') result = { num: 0, limit: 100 };
+  return result;
 };

@@ -5,11 +5,14 @@ const auth = require('../../middleware/auth');
 const router = express.Router();
 
 //get full pokemon list(pokedex)
-router.get('/pokedex/:num?', async (req, res) => {
-  const { num } = req.params;
+router.get('/pokedex/:num?/:limit?', async (req, res) => {
+  const { num, limit } = req.params;
+  const NoLimit = num >= 800 ? 7 : 100;
   try {
     const response = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon?offset=${num || 0}&limit=100`
+      `https://pokeapi.co/api/v2/pokemon?offset=${num || 0}&limit=${
+        limit || NoLimit
+      }`
     );
     const data = await response.data.results.map((result) => ({
       ...result,
@@ -45,6 +48,7 @@ router.get('/:pokemon_id_name', async (req, res) => {
 
     //get species description
     const speciesDescription = allPromisesdata[0].flavor_text_entries;
+    const speciesVariation = allPromisesdata[0].varieties;
 
     //get description
     const fetchedAbilityDescription = allPromisesdata.splice(1);
@@ -59,6 +63,7 @@ router.get('/:pokemon_id_name', async (req, res) => {
       description: speciesDescription,
       abilityDescriptions: fetchedAbilityDescription,
       evolutionChain: evolutionChain.data,
+      varieties: speciesVariation,
     });
   } catch (error) {
     console.error(error);
@@ -287,33 +292,33 @@ router.get('/:pokemon_id_name', async (req, res) => {
 //   }
 // });
 
-//add pokemon to user team
-router.post('/:pokemon_id', auth, async (req, res) => {
-  const { pokemonname } = req.body;
-  const { pokemon_id } = req.params;
-  try {
-    const user = await User.findById(req.user.id);
+// //add pokemon to user team
+// router.post('/:pokemon_id', auth, async (req, res) => {
+//   const { pokemonname } = req.body;
+//   const { pokemon_id } = req.params;
+//   try {
+//     const user = await User.findById(req.user.id);
 
-    if (!user) return res.status(401).send('Invalid credentials');
+//     if (!user) return res.status(401).send('Invalid credentials');
 
-    if (user.pokemonTeam.length >= 6)
-      return res.status(422).send('Your team is full!');
+//     if (user.pokemonTeam.length >= 6)
+//       return res.status(422).send('Your team is full!');
 
-    const updatePokemonTeam = await User.findByIdAndUpdate(
-      req.user.id,
-      {
-        $push: {
-          pokemonTeam: { pokemonname, nickname: pokemonname, id: pokemon_id },
-        },
-      },
-      { new: true }
-    );
+//     const updatePokemonTeam = await User.findByIdAndUpdate(
+//       req.user.id,
+//       {
+//         $push: {
+//           pokemonTeam: { pokemonname, nickname: pokemonname, id: pokemon_id },
+//         },
+//       },
+//       { new: true }
+//     );
 
-    res.send(updatePokemonTeam);
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).json({ msg: 'Server Error', err: error.message });
-  }
-});
+//     res.send(updatePokemonTeam);
+//   } catch (error) {
+//     console.error(error.message);
+//     res.status(500).json({ msg: 'Server Error', err: error.message });
+//   }
+// });
 
 module.exports = router;

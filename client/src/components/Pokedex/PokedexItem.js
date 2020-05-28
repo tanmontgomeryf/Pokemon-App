@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { padZeros, checkPokemon } from '../../helpers';
+import { padZeros, checkPokemon, checkPokemonForLink } from '../../helpers';
 
 const PokedexItem = ({ pokemon: { name, id } }) => {
   return (
     <div className='PokedexItem-item'>
       <Link to={`/${id}`}>
         <img
-          src={`https://img.pokemondb.net/sprites/home/normal/${checkPokemon(
+          src={`https://img.pokemondb.net/sprites/home/normal/${checkPokemonForLink(
             name
           )}.png`}
           alt={name}

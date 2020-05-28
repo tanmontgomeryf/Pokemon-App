@@ -49,7 +49,7 @@ const Pokemon = ({
       );
   }
 
-  return loading ? (
+  return loading || pokemon === null ? (
     <Loader />
   ) : (
     <div className='Pokemon'>

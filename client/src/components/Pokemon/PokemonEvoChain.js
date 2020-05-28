@@ -1,6 +1,11 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { padZeros, cleanEvolutionChain, checkPokemon } from '../../helpers';
+import {
+  padZeros,
+  cleanEvolutionChain,
+  checkPokemon,
+  checkPokemonForLink,
+} from '../../helpers';
 
 const PokemonEvoChain = ({ evolutionChain: { chain }, id }) => {
   return (
@@ -9,7 +14,7 @@ const PokemonEvoChain = ({ evolutionChain: { chain }, id }) => {
       {cleanEvolutionChain(chain).map((evo) => (
         <Link key={evo.id} to={`/${evo.id}`}>
           <img
-            src={`https://img.pokemondb.net/sprites/home/normal/${checkPokemon(
+            src={`https://img.pokemondb.net/sprites/home/normal/${checkPokemonForLink(
               evo.name
             )}.png`}
             alt={checkPokemon(evo.name)}

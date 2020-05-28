@@ -6,6 +6,9 @@ import {
   FETCH_MORE_POKEDEX_SUCCESS,
   FETCH_POKEMON_REQUEST,
   REMOVE_EXTRA_POKEMON,
+  FETCH_GENERATION,
+  FETCH_GENERATION_SUCCESS,
+  FETCH_GENERATION_ERROR,
 } from './pokemonTypes';
 
 const initialState = {
@@ -56,6 +59,25 @@ const pokemonReducer = (state = initialState, action) => {
         pokedex: state.pokedex.filter((pokemon) => pokemon.id <= 807),
       };
     case FETCH_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: payload,
+      };
+    case FETCH_GENERATION:
+      return {
+        ...state,
+        loading: true,
+        pokedex: null,
+        error: null,
+      };
+    case FETCH_GENERATION_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        pokedex: payload,
+      };
+    case FETCH_GENERATION_ERROR:
       return {
         ...state,
         loading: false,

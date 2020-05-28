@@ -1,17 +1,19 @@
 body {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-family: 'Fira Sans', sans-serif;
   letter-spacing: 1.2px;
 }
-
+/* 
 a {
   text-decoration: none;
   color: black;
-}
+} */
 
-.buttons {
+/* .buttons {
   margin-right: 1vw;
   font-weight: 600;
   padding: 2px 5px;
@@ -33,9 +35,9 @@ a {
 
 .buttons:hover {
   opacity: 0.5;
-}
+} */
 
-.type-primary {
+/* .type-primary {
   background: #007bff;
 }
 
@@ -58,9 +60,9 @@ a {
 .disabled {
   cursor: not-allowed;
   opacity: 0.5;
-}
+} */
 
-.types {
+/* .types {
   margin-left: 1vw;
   font-weight: 600;
   width: 120px;
@@ -73,7 +75,7 @@ a {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
   text-transform: uppercase;
   cursor: default;
-}
+} */
 
 .type-normal {
   background-color: #aa9;
@@ -147,12 +149,15 @@ a {
   background-color: #e9e;
 }
 
-.Navbar {
+/* .Navbar {
   display: flex;
   justify-content: space-between;
   background-color: #bd3736;
   height: 10vh;
-  padding: 0 2vw;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  z-index: 10;
 }
 
 .Navbar-logo {
@@ -163,6 +168,7 @@ a {
   letter-spacing: 3px;
   font-size: 1.5rem;
   font-weight: normal;
+  margin-left: 5vw;
 }
 
 .Navbar-logo a {
@@ -187,6 +193,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-right: 5vw;
 }
 
 .Navbar-myTeam {
@@ -205,11 +212,11 @@ a {
   opacity: 1;
   z-index: 50;
   bottom: 7.5px;
-}
+} */
 
 .Landing {
   height: 100vh;
-  background-image: url(https://d.facdn.net/art/giovannicotonecoda/1405291602/1405291602.giovannicotonecoda_pokeballwallpaper_dt.png);
+  background-image: url(../img/Landing2.png);
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
@@ -225,36 +232,23 @@ a {
   width: 70px;
   background-color: transparent;
   border-radius: 50%;
-  box-shadow: 3px 5px 3px 0px rgba(0, 0, 0, 0.75);
-  bottom: calc(50% - 32px);
+  bottom: calc(50% - 35px);
   left: calc(50% - 35px);
   transition: ease-in-out background-color 0.2s;
   z-index: 10;
 }
 
 .Landing-button:hover::before {
-  background-color: #e74c3c;
+  background-color: #bd3736;
   cursor: pointer;
-}
-
-.Landing-ball::after {
-  position: absolute;
-  content: '';
-  height: 364px;
-  width: 364px;
-  bottom: calc(50% - 181px);
-  left: calc(50% - 182px);
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.2) 0%,
-    rgba(50, 50, 50, 0.3) 80%
-  );
 }
 
 .Pokedex {
   width: 90vw;
   margin: 0 5vw;
+  padding-top: 10vh;
+  position: relative;
+  z-index: -1;
 }
 
 .Pokedex-Grid {
@@ -271,10 +265,10 @@ a {
   display: flex;
   justify-content: center;
   text-align: center;
-  background-image: url(../img/Pokeball.png);
+  background-image: url(../img/Pokeball3.png);
   background-repeat: no-repeat;
   background-position: 50% 30%;
-  background-size: 150px;
+  background-size: 120px;
   border-radius: 10px;
 }
 
@@ -389,7 +383,7 @@ a {
   position: absolute;
 }
 .pokeball::before {
-  background: #ff0000;
+  background: #bd3736;
   width: 100%;
   height: 50%;
 }
@@ -418,7 +412,7 @@ a {
     background: #eee;
   }
   to {
-    background: #e74c3c;
+    background: #bd3736;
   }
 }
 @keyframes shake {
