@@ -8,8 +8,10 @@ import {
 } from '../../redux';
 import PokedexItem from './PokedexItem';
 import InfiniteScroll from 'react-infinite-scroller';
-import ScrollToTop from 'react-scroll-up';
+import ScrollUp from 'react-scroll-up';
 import Loader from '../Layouts/Loader';
+import './PokedexStyles.css';
+import PokedexFilter from './PokedexFilter';
 
 const Pokedex = ({
   pokemon: { loading, pokedex },
@@ -23,43 +25,14 @@ const Pokedex = ({
 
   const [fullDex, setFullDex] = useState(true);
 
-  const handleClick = (e) => {
-    fetchGenerationData(e.target.name);
-    if (e.target.name === 'allGen') {
-      setFullDex(true);
-    } else {
-      setFullDex(false);
-    }
-  };
-
   return loading || pokedex === null ? (
     <Loader />
   ) : (
     <div className='Pokedex'>
-      <button onClick={handleClick} name='allGen'>
-        All Generation
-      </button>
-      <button onClick={handleClick} name='gen1'>
-        Generation 1
-      </button>
-      <button onClick={handleClick} name='gen2'>
-        Generation 2
-      </button>
-      <button onClick={handleClick} name='gen3'>
-        Generation 3
-      </button>
-      <button onClick={handleClick} name='gen4'>
-        Generation 4
-      </button>
-      <button onClick={handleClick} name='gen5'>
-        Generation 5
-      </button>
-      <button onClick={handleClick} name='gen6'>
-        Generation 6
-      </button>
-      <button onClick={handleClick} name='gen7'>
-        Generation 7
-      </button>
+      <PokedexFilter
+        fetchGenerationData={fetchGenerationData}
+        setFullDex={setFullDex}
+      />
       <InfiniteScroll
         pageStart={0}
         loadMore={() =>
@@ -73,9 +46,22 @@ const Pokedex = ({
           <PokedexItem pokemon={pokemon} key={pokemon.id} />
         ))}
       </InfiniteScroll>
-      <ScrollToTop showUnder={160}>
-        <span>UP</span>
-      </ScrollToTop>
+      <ScrollUp
+        className='Pokedex-scrollUp'
+        showUnder={160}
+        style={{
+          height: '50px',
+          width: '50px',
+          display: 'flex',
+          justifyContent: 'center',
+          backgroundColor: '#bd3736',
+          borderRadius: '50%',
+          bottom: 20,
+          right: 20,
+        }}
+      >
+        <i className='fas fa-chevron-up PokedexScrollUpIcon'></i>
+      </ScrollUp>
     </div>
   );
 };

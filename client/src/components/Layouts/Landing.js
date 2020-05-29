@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { inLandingPage } from '../../redux';
+import './LandingStyles.css';
 
 const Landing = () => {
   const dispatch = useDispatch();

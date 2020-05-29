@@ -12,7 +12,7 @@ const NavbarBurgerIcon = ({ handleClick, isOpen }) => {
         <div></div>
       </div>
       <i
-        class={`fa fa-close ${isOpen ? null : 'close'}`}
+        className={`fa fa-close ${isOpen ? null : 'close'}`}
         onClick={handleClick}
       ></i>
     </div>

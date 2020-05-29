@@ -131,7 +131,6 @@ export const addPokemonToTeam = (userId, pokemonId, pokemonDetails) => async (
     const response = await axios.post(`/user/${userId}`, data, {
       headers: { 'Content-Type': 'application/json' },
     });
-    console.log(response.data);
     dispatch(addPokemonSuccess(response.data));
   } catch (error) {
     dispatch(addPokemonError(error));
@@ -141,7 +140,6 @@ export const addPokemonToTeam = (userId, pokemonId, pokemonDetails) => async (
 export const deletePokemon = (userId, pokemonId) => async (dispatch) => {
   try {
     const response = await axios.delete(`/user/${userId}/pokemon/${pokemonId}`);
-    console.log(response.data);
     dispatch(deletePokemonSuccess(response.data));
   } catch (error) {
     dispatch(deletePokemonError(error));

@@ -1,0 +1,145 @@
+.Pokedex {
+  width: 90vw;
+  margin: 0 5vw;
+  padding-top: 10vh;
+  position: relative;
+  z-index: 0;
+}
+
+.Pokedex-Grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5vh 0.5vw;
+  width: 100%;
+  height: 100%;
+}
+
+.PokedexItem-item {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-image: url(../../img/Pokeball3.png);
+  background-repeat: no-repeat;
+  background-position: 50% 30%;
+  background-size: 120px;
+  border-radius: 10px;
+}
+
+.PokedexItem-item a {
+  text-decoration: none;
+  color: black;
+}
+
+.PokedexItem-img {
+  -webkit-filter: drop-shadow(0px 7px 5px #222);
+  filter: drop-shadow(0px 7px 5px #222);
+  transition: ease-in-out 0.2s;
+  height: 128px;
+  width: 128px;
+  position: relative;
+}
+
+.PokedexItem-item:hover .PokedexItem-img {
+  transform: scale(1.2);
+}
+
+.PokedexItem-title {
+  margin: 20px 0 10px 0;
+  transition: ease-in-out 0.2s;
+}
+
+.PokedexItem-item:hover .PokedexItem-title {
+  color: #bd3736;
+}
+
+.PokedexItem-name {
+  text-transform: capitalize;
+}
+
+.PokedexItem-number {
+  font-weight: 400;
+}
+
+.Pokedex .PokedexScrollUpIcon {
+  font-size: 2rem;
+  color: white;
+  margin-top: 15%;
+}
+
+.Pokedex-filters {
+  height: 5vh;
+  text-align: end;
+  margin: 2vh 0 1vh 0;
+  position: relative;
+  z-index: 2;
+}
+
+.Pokedex-filterButtons {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  transform: translateY(-77vh);
+  right: 0;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  visibility: visible;
+  transition: 0.5s ease-in-out;
+  transition-property: visibility, transform;
+}
+
+.Pokedex-filterButtons.open {
+  visibility: visible;
+  transform: translateY(-7vh);
+}
+
+.Pokedex-filterButtons button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  height: 50px;
+  padding: 0;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  margin-top: -1px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.Pokedex-filterButtons button:hover {
+  color: white;
+  background-color: #bd3736;
+  font: inherit;
+  border: none;
+}
+
+.Pokedex-filterButtons .fas.fa-chevron-up {
+  font-size: 1.5rem;
+}
+
+.Pokedex-filters .Pokedex-filterButton {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  background-color: #bd3736;
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: white;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: 0.3s ease-in-out;
+}
+
+.Pokedex-filters .Pokedex-filterButton:hover {
+  opacity: 0.5;
+}

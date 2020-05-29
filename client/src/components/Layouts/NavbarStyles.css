@@ -7,6 +7,7 @@
   justify-content: space-between;
   position: fixed;
   top: 0;
+  z-index: 100;
 }
 
 .Navbar-logo {
@@ -20,7 +21,7 @@
 
 .Navbar-burger {
   margin-right: 5vw;
-  z-index: 60;
+  z-index: 110;
 }
 
 .Navbar-burgerIcon {
@@ -51,7 +52,9 @@
   font-size: 1.6rem;
   color: white;
   position: relative;
-  z-index: 60;
+  z-index: 200;
+  transform: rotate(0deg);
+  transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .Navbar-burger .fa-close.close {
@@ -60,6 +63,8 @@
 
 .Navbar-burger .fa-close:hover {
   cursor: pointer;
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
 }
 
 .Navbar-icons {
@@ -80,9 +85,10 @@
   justify-content: space-between;
   align-items: center;
   list-style-type: none;
-  z-index: 50;
+  z-index: 101;
   visibility: hidden;
   transition: 0.5s ease-in-out;
+  transition-property: transform, visibility;
 }
 
 .Navbar-links.open {
@@ -129,12 +135,15 @@
   height: 100vh;
   background-color: #bd3736;
   position: absolute;
-  top: 0;
+  transform: translateY(-2.5vh);
   right: 0;
-  z-index: 100;
+  z-index: 125;
   display: flex;
   align-items: center;
   justify-content: center;
+  visibility: visible;
+  transition: 0.5s ease-in-out;
+  transition-property: transform, visibility;
 }
 
 .Navbar-formInput input {
@@ -175,13 +184,21 @@
   position: absolute;
   top: 2.5vh;
   right: 5vw;
-  z-index: 101;
+  z-index: 130;
   text-align: center;
   line-height: 32px;
   height: 30px;
   width: 30px;
   font-size: 1.6rem;
   color: white;
+  visibility: visible;
+  transform: rotate(0deg);
+  transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.Navbar-form .fa-close.icon:hover {
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
 }
 
 .Navbar-form .fa-search.icon {
@@ -193,10 +210,15 @@
   color: white;
 }
 
-.Navbar-formInput.close {
-  display: none;
+.Navbar-form .icon:hover {
+  cursor: pointer;
 }
 
-.icon.close {
-  display: none;
+.Navbar-formInput.close {
+  visibility: hidden;
+  transform: translateY(-105vh);
+}
+
+.fa.icon.close {
+  visibility: hidden;
 }

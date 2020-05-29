@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'PKMNRBYGSC';
+  src: url('../../font/PKMNRBYGSC.ttf') format('truetype');
+}
+
+.Landing {
+  height: 100vh;
+  background-image: url(../../img/Landing2.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.Landing-button::before {
+  position: absolute;
+  content: '';
+  height: 70px;
+  width: 70px;
+  background-color: transparent;
+  border-radius: 50%;
+  bottom: calc(50% - 35px);
+  left: calc(50% - 35px);
+  transition: ease-in-out background-color 0.2s;
+  z-index: 10;
+}
+
+.Landing-button:hover::before {
+  background-color: #bd3736;
+  cursor: pointer;
+}
+
+.Landing::after {
+  content: 'Your very own POKéMON legend will be about to unfold by click the middle of the POKéBALL!';
+  position: absolute;
+  bottom: 3vh;
+  border: 3px solid #3b4cca;
+  width: 80vw;
+  padding: 12.5px 20px;
+  border-radius: 20px;
+  background-color: white;
+  font-family: 'PKMNRBYGSC';
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  line-height: 1.1rem;
+}

@@ -1,11 +1,16 @@
-body {
-  margin: 0;
-  padding: 0;
+* {
+  box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
   font-family: 'Fira Sans', sans-serif;
   letter-spacing: 1.2px;
+  width: 100%;
 }
 /* 
 a {
@@ -147,158 +152,6 @@ a {
 
 .type-fairy {
   background-color: #e9e;
-}
-
-/* .Navbar {
-  display: flex;
-  justify-content: space-between;
-  background-color: #bd3736;
-  height: 10vh;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  z-index: 10;
-}
-
-.Navbar-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 1.5rem;
-  font-weight: normal;
-  margin-left: 5vw;
-}
-
-.Navbar-logo a {
-  color: white;
-}
-
-.Navbar-form {
-  margin-right: 1vw;
-  width: 230px;
-  height: 25px;
-  border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  padding-left: 5px;
-}
-
-.Navbar-form::placeholder {
-  font-family: 'Fira Sans', sans-serif;
-  letter-spacing: 1.2px;
-}
-
-.Navbar-linksdiv {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-right: 5vw;
-}
-
-.Navbar-myTeam {
-  position: relative;
-}
-
-.Navbar-myTeamSpan {
-  position: absolute;
-  content: '';
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 30px;
-  background-color: #007bff;
-  opacity: 1;
-  z-index: 50;
-  bottom: 7.5px;
-} */
-
-.Landing {
-  height: 100vh;
-  background-image: url(../img/Landing2.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.Landing-button::before {
-  position: absolute;
-  content: '';
-  height: 70px;
-  width: 70px;
-  background-color: transparent;
-  border-radius: 50%;
-  bottom: calc(50% - 35px);
-  left: calc(50% - 35px);
-  transition: ease-in-out background-color 0.2s;
-  z-index: 10;
-}
-
-.Landing-button:hover::before {
-  background-color: #bd3736;
-  cursor: pointer;
-}
-
-.Pokedex {
-  width: 90vw;
-  margin: 0 5vw;
-  padding-top: 10vh;
-  position: relative;
-  z-index: -1;
-}
-
-.Pokedex-Grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 5vh 0.5vw;
-  width: 100%;
-  height: 100%;
-}
-
-.PokedexItem-item {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  background-image: url(../img/Pokeball3.png);
-  background-repeat: no-repeat;
-  background-position: 50% 30%;
-  background-size: 120px;
-  border-radius: 10px;
-}
-
-.PokedexItem-img {
-  -webkit-filter: drop-shadow(0px 7px 5px #222);
-  filter: drop-shadow(0px 7px 5px #222);
-  transition: ease-in-out 0.2s;
-  height: 128px;
-  width: 128px;
-}
-
-.PokedexItem-item:hover .PokedexItem-img {
-  transform: scale(1.2);
-}
-
-.PokedexItem-title {
-  margin: 20px 0 10px 0;
-  transition: ease-in-out 0.2s;
-}
-
-.PokedexItem-item:hover .PokedexItem-title {
-  color: red;
-}
-
-.PokedexItem-name {
-  text-transform: capitalize;
-}
-
-.PokedexItem-number {
-  font-weight: 400;
 }
 
 .Pokemon {

@@ -46,7 +46,7 @@ const NavbarLinks = ({
                 return match;
               }}
             >
-              My Team <span>{auth.user.pokemonTeam.length}</span>
+              My Team
             </NavLink>
           </li>
           <li>

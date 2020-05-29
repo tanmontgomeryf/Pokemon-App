@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const Navform = () => {
@@ -46,4 +46,4 @@ const Navform = () => {
   );
 };
 
-export default Navform;
+export default memo(Navform);

@@ -37,9 +37,9 @@ const Trainer = ({
             auth.user !== null &&
             users.user._id === auth.user._id && <button>x</button>}
           <div>
-            {addDefaultTeam(users.user.pokemonTeam).map((pokemon) =>
+            {addDefaultTeam(users.user.pokemonTeam).map((pokemon, i) =>
               pokemon.defaultPokemon ? (
-                <div>default pokemon</div>
+                <div key={i}>default pokemon</div>
               ) : (
                 <TrainerPokemon
                   key={pokemon._id}

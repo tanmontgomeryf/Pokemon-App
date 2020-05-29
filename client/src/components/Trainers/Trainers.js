@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchUsersData, notLandingPage } from '../../redux';
 import Loader from '../Layouts/Loader';
 import TrainersItem from './TrainersItem';
+import './TrainersStyles.css';
 
 const Trainers = ({
   users: { users, isLoading },
@@ -16,7 +17,7 @@ const Trainers = ({
   return isLoading || users === null ? (
     <Loader />
   ) : (
-    <div>
+    <div className='Trainers'>
       {users.map((user) => (
         <TrainersItem key={user._id} user={user} />
       ))}
