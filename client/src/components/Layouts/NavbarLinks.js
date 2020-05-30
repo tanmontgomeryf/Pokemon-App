@@ -12,7 +12,7 @@ const NavbarLinks = ({
   handleClick,
 }) => {
   return (
-    <ul className={`Navbar-links ${isOpen ? 'open' : null}`}>
+    <ul className={`Navbar-links ${isOpen ? null : 'close'}`}>
       <li onClick={handleClick}>
         <NavLink
           to='/pokedex'

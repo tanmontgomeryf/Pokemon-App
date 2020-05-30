@@ -1,0 +1,216 @@
+.Navbar {
+  height: 10%;
+  width: 100%;
+  background-color: #bd3736;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+
+.Navbar-logo {
+  margin-left: 5%;
+}
+
+.Navbar-logo img {
+  max-width: 160px;
+}
+
+.Navbar-icons {
+  margin-right: 5%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Navbar-links {
+  position: absolute;
+  height: 100vh;
+  width: 75%;
+  background-color: #bd3736;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  transform: translateX(7.5%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  visibility: visible;
+  transition: 500ms ease-in-out;
+  transition-property: visibility, transform;
+}
+
+.Navbar-links.close {
+  visibility: hidden;
+  transform: translateX(107.5%);
+}
+
+.Navbar-links li {
+  width: 80%;
+  list-style-type: none;
+}
+
+.Navbar-links div {
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  border-bottom: 1px solid white;
+  padding-bottom: 10px;
+}
+
+.Navbar-links li a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid white;
+  padding-bottom: 10px;
+}
+
+.Navbar-links li:first-child {
+  margin-top: 20vh;
+}
+
+.Navbar-links li:last-child {
+  margin-bottom: 40vh;
+}
+
+.Navbar-burger {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.Navbar-burger .fa.fa-close {
+  position: absolute;
+  top: 28%;
+  right: 5%;
+  color: white;
+  z-index: 11;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  font-size: 1.8rem;
+  text-align: center;
+  visibility: visible;
+  transform: rotate(0deg);
+  transition: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition-property: transform, visibility;
+}
+
+.Navbar-burger .fa.fa-close.close {
+  visibility: hidden;
+}
+
+.Navbar-burger .fa.fa-close:hover {
+  transform: rotate(360deg);
+}
+
+.Navbar-burgerIcon {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.Navbar-burgerIcon div {
+  width: 100%;
+  border-bottom: 3px solid white;
+}
+
+.Navbar-form .icon {
+  width: 30px;
+  height: 30px;
+  color: white;
+  font-size: 1.5rem;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.Navbar-form .fa.fa-close.icon {
+  position: absolute;
+  top: 28%;
+  right: 5%;
+  color: white;
+  z-index: 12;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  font-size: 1.8rem;
+  text-align: center;
+  visibility: visible;
+  transform: rotate(0deg);
+  transition: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition-property: transform, visibility;
+}
+
+.Navbar-form .fa.fa-close.icon.close {
+  visibility: hidden;
+}
+
+.Navbar-form .fa.fa-close.icon:hover {
+  transform: rotate(360deg);
+}
+
+.Navbar-formInput {
+  position: absolute;
+  transform: translateY(-2.7%);
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: #bd3736;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: visible;
+  transition: 500ms ease-in-out;
+  transition-property: visibility, transform;
+}
+
+.Navbar-formInput.close {
+  visibility: hidden;
+  transform: translateY(-105%);
+}
+
+.Navbar-formInput form {
+  width: 80%;
+  height: 5%;
+  position: relative;
+}
+
+.Navbar-formInput form input {
+  width: 100%;
+  border: 2px solid white;
+  height: 100%;
+  border-radius: 10px;
+  padding-left: 5%;
+  padding-right: 15%;
+  background-color: #bd3736;
+  color: white;
+}
+
+.Navbar-formInput form input::placeholder {
+  font-family: 'Fira Sans', sans-serif;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.Navbar-formInput form input:focus {
+  outline: none;
+}
+
+.Navbar-formInput form button {
+  border: none;
+  background-color: transparent;
+  color: white;
+  height: 30px;
+  width: 30px;
+  font-size: 1.1rem;
+  text-align: center;
+  line-height: 30px;
+  position: absolute;
+  top: 0;
+  right: 2%;
+}

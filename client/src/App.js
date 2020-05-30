@@ -11,6 +11,7 @@ import Trainers from './components/Trainers/Trainers';
 import Trainer from './components/Trainer/Trainer';
 import { fetchPokedex, fetchUserInfo } from './redux';
 import './styles/App.css';
+import Loader from './components/Layouts/Loader';
 
 const App = () => {
   const isLanding = useSelector((state) => state.isLanding);
@@ -25,6 +26,7 @@ const App = () => {
       {!isLanding.isLanding && <Navbar />}
       <Switch>
         <Route exact path='/' render={() => <Landing />} />
+        <Route exact path='/loader' render={() => <Loader />} />
         <Route exact path='/login' render={() => <Login />} />
         <Route exact path='/register' render={() => <Register />} />
         <Route exact path='/trainers' render={() => <Trainers />} />

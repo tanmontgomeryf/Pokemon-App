@@ -4,7 +4,8 @@
 }
 
 .Landing {
-  height: 100vh;
+  height: 100%;
+  width: 100%;
   background-image: url(../../img/Landing2.png);
   background-repeat: no-repeat;
   background-position: center;
@@ -12,6 +13,21 @@
   align-items: center;
   justify-content: center;
   position: relative;
+}
+
+.Landing::after {
+  content: 'Open the POKéBALL to unlock your very own POKéMON legend!';
+  position: absolute;
+  bottom: 3%;
+  border: 3px solid #3b4cca;
+  width: 80%;
+  padding: 12.5px 20px;
+  border-radius: 20px;
+  background-color: white;
+  font-family: 'PKMNRBYGSC';
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  line-height: 1.1rem;
 }
 
 .Landing-button::before {
@@ -30,19 +46,4 @@
 .Landing-button:hover::before {
   background-color: #bd3736;
   cursor: pointer;
-}
-
-.Landing::after {
-  content: 'Your very own POKéMON legend will be about to unfold by click the middle of the POKéBALL!';
-  position: absolute;
-  bottom: 3vh;
-  border: 3px solid #3b4cca;
-  width: 80vw;
-  padding: 12.5px 20px;
-  border-radius: 20px;
-  background-color: white;
-  font-family: 'PKMNRBYGSC';
-  font-size: 0.7rem;
-  letter-spacing: 3px;
-  line-height: 1.1rem;
 }

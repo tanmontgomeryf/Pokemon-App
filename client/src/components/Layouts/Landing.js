@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { inLandingPage } from '../../redux';
 import './LandingStyles.css';
+import landing from '../../img/Landing3.png';
 
 const Landing = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,6 @@ const Landing = () => {
     <div className='Landing'>
       <Link to='/pokedex'>
         <div className='Landing-button'></div>
-        <div className='Landing-ball'></div>
       </Link>
     </div>
   );

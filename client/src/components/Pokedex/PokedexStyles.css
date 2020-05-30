@@ -1,5 +1,5 @@
 .Pokedex {
-  width: 90vw;
+  width: 90%;
   margin: 0 5vw;
   padding-top: 10vh;
   position: relative;
@@ -80,7 +80,7 @@
   position: absolute;
   width: 100%;
   height: auto;
-  transform: translateY(-77vh);
+  transform: translateY(-76.2vh);
   right: 0;
   background-color: transparent;
   display: flex;
@@ -93,7 +93,7 @@
 
 .Pokedex-filterButtons.open {
   visibility: visible;
-  transform: translateY(-7vh);
+  transform: translateY(-6.2vh);
 }
 
 .Pokedex-filterButtons button {

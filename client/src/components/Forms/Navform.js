@@ -19,6 +19,7 @@ const Navform = () => {
 
   const handleClick = () => {
     setToggle(!toggle);
+    setFormData('');
   };
   return (
     <div className='Navbar-form'>
@@ -36,12 +37,11 @@ const Navform = () => {
           </button>
         </form>
       </div>
-
+      <i className={`fas fa-search icon`} onClick={handleClick}></i>
       <i
         className={`fa fa-close icon ${toggle ? null : 'close'}`}
         onClick={handleClick}
       ></i>
-      <i className={`fas fa-search icon`} onClick={handleClick}></i>
     </div>
   );
 };

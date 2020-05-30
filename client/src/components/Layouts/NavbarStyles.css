@@ -1,7 +1,7 @@
 .Navbar {
   background-color: #bd3736;
-  min-height: 10vh;
-  width: 100vw;
+  height: 10%;
+  width: 100%;
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -11,7 +11,7 @@
 }
 
 .Navbar-logo {
-  margin-left: 5vw;
+  margin-left: 5%;
   text-decoration: none;
 }
 
@@ -19,8 +19,11 @@
   width: 160px;
 }
 
+.Navbar-icons {
+  margin-right: 5%;
+}
+
 .Navbar-burger {
-  margin-right: 5vw;
   z-index: 110;
 }
 
@@ -74,12 +77,12 @@
 .Navbar-links {
   margin: 0;
   padding: 0;
-  position: fixed;
+  position: absolute;
   top: 0;
-  transform: translateX(20vw);
+  transform: translateX(35%);
   background-color: #bd3736;
   height: 100vh;
-  width: 75vw;
+  width: 75%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -93,21 +96,22 @@
 
 .Navbar-links.open {
   visibility: visible;
-  transform: translateX(-50vw);
+  transform: translateX(-63.5%);
 }
 
 .Navbar-links li {
   width: 80%;
+  height: auto;
   color: white;
   cursor: pointer;
 }
 
 .Navbar-links li:first-child {
-  margin-top: 15vh;
+  margin-top: 50%;
 }
 
 .Navbar-links li:last-child {
-  margin-bottom: 40vh;
+  margin-bottom: 100%;
 }
 
 .Navbar-links li a {
@@ -127,7 +131,7 @@
 }
 
 .Navbar-form {
-  margin-right: 3vw;
+  margin-right: 15px;
 }
 
 .Navbar-formInput {
