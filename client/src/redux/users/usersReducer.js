@@ -7,6 +7,7 @@ import {
   FETCH_USER_ERROR,
   EDIT_NICKNAME_SUCCESS,
   DELETE_POKEMON_SUCCESS,
+  DELETE_USER_SUCCESS,
 } from './usersTypes';
 
 const initialState = {
@@ -60,6 +61,12 @@ const usersReducer = (state = initialState, actions) => {
           ...state.user,
           pokemonTeam: payload,
         },
+      };
+    case DELETE_USER_SUCCESS:
+      return {
+        ...state,
+        users: state.users.filter((user) => user._id !== payload),
+        user: null,
       };
     default:
       return state;

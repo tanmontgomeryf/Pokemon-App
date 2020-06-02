@@ -13,6 +13,8 @@ import {
   DELETE_POKEMON_ERROR,
   EDIT_NICKNAME_SUCCESS,
   EDIT_NICKNAME_ERROR,
+  DELETE_USER_SUCCESS,
+  DELETE_USER_ERROR,
 } from './authTypes';
 
 const fetchingAuth = () => ({
@@ -68,6 +70,16 @@ const editNickNameSuccess = (data) => ({
 
 const editNickNameError = (error) => ({
   type: EDIT_NICKNAME_ERROR,
+  payload: error,
+});
+
+const deleteUserSuccess = (userId) => ({
+  type: DELETE_USER_SUCCESS,
+  payload: userId,
+});
+
+const deleteUserError = (error) => ({
+  type: DELETE_USER_ERROR,
   payload: error,
 });
 
@@ -161,5 +173,14 @@ export const editNickName = (userId, pokemonId, nickname) => async (
     dispatch(editNickNameSuccess(response.data));
   } catch (error) {
     dispatch(editNickNameError(error));
+  }
+};
+
+export const deleteUser = (userId) => async (dispatch) => {
+  try {
+    await axios.delete(`/user/${userId}`);
+    dispatch(deleteUserSuccess(userId));
+  } catch (error) {
+    dispatch(deleteUserError(error));
   }
 };

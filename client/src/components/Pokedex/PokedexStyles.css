@@ -1,17 +1,19 @@
 .Pokedex {
-  width: 90%;
-  margin: 0 5vw;
+  width: 100%;
   padding-top: 10vh;
   position: relative;
+  display: flex;
+  flex-direction: column;
   z-index: 0;
 }
 
 .Pokedex-Grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 5vh 0.5vw;
-  width: 100%;
+  grid-gap: 10px;
+  width: 90%;
   height: 100%;
+  align-self: center;
 }
 
 .PokedexItem-item {
@@ -38,7 +40,6 @@
   transition: ease-in-out 0.2s;
   height: 128px;
   width: 128px;
-  position: relative;
 }
 
 .PokedexItem-item:hover .PokedexItem-img {
@@ -71,16 +72,16 @@
 .Pokedex-filters {
   height: 5vh;
   text-align: end;
-  margin: 2vh 0 1vh 0;
-  position: relative;
+  margin: 2vh 0 0 0;
   z-index: 2;
+  align-self: center;
 }
 
 .Pokedex-filterButtons {
   position: absolute;
   width: 100%;
   height: auto;
-  transform: translateY(-76.2vh);
+  transform: translateY(-112.5%);
   right: 0;
   background-color: transparent;
   display: flex;
@@ -89,11 +90,12 @@
   visibility: visible;
   transition: 0.5s ease-in-out;
   transition-property: visibility, transform;
+  z-index: 5;
 }
 
 .Pokedex-filterButtons.open {
   visibility: visible;
-  transform: translateY(-6.2vh);
+  transform: translateY(-12.5%);
 }
 
 .Pokedex-filterButtons button {
@@ -104,23 +106,25 @@
   font: inherit;
   cursor: pointer;
   outline: inherit;
-  height: 50px;
+  height: 30px;
   padding: 0;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.3);
   margin-top: -1px;
-  border-radius: 5px;
-  background-color: white;
+  background-color: rgb(80, 80, 80);
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
 }
 
 .Pokedex-filterButtons button:hover {
   color: white;
   background-color: #bd3736;
-  font: inherit;
   border: none;
 }
 
 .Pokedex-filterButtons .fas.fa-chevron-up {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .Pokedex-filters .Pokedex-filterButton {
@@ -131,13 +135,18 @@
   font: inherit;
   cursor: pointer;
   outline: inherit;
-  background-color: #bd3736;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
+  font-size: 0.625rem;
+  /* background-color: #bd3736;
   padding: 5px 10px;
   border-radius: 10px;
   color: white;
   letter-spacing: 3px;
   text-transform: uppercase;
-  transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out; */
 }
 
 .Pokedex-filters .Pokedex-filterButton:hover {

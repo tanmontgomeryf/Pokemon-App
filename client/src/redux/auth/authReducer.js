@@ -12,6 +12,8 @@ import {
   DELETE_POKEMON_ERROR,
   EDIT_NICKNAME_SUCCESS,
   EDIT_NICKNAME_ERROR,
+  DELETE_USER_SUCCESS,
+  DELETE_USER_ERROR,
 } from './authTypes';
 
 const initialState = {
@@ -72,9 +74,17 @@ const authReducer = (state = initialState, action) => {
           pokemonTeam: payload,
         },
       };
+    case DELETE_USER_SUCCESS:
+      return {
+        ...state,
+        error: null,
+        user: null,
+        isAuthenticated: false,
+      };
     case ADD_POKEMON_ERROR:
     case DELETE_POKEMON_ERROR:
     case EDIT_NICKNAME_ERROR:
+    case DELETE_USER_ERROR:
       return {
         ...state,
         error: payload,

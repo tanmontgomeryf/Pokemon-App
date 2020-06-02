@@ -9,6 +9,7 @@
   background-image: url(../../img/Landing2.png);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 350%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,10 +19,10 @@
 .Landing::after {
   content: 'Open the POKéBALL to unlock your very own POKéMON legend!';
   position: absolute;
-  bottom: 3%;
+  bottom: 10%;
   border: 3px solid #3b4cca;
-  width: 80%;
-  padding: 12.5px 20px;
+  width: 75%;
+  padding: 15px 30px;
   border-radius: 20px;
   background-color: white;
   font-family: 'PKMNRBYGSC';
@@ -33,12 +34,16 @@
 .Landing-button::before {
   position: absolute;
   content: '';
-  height: 70px;
-  width: 70px;
+  /* height: 70px; for fullscreen
+  width: 70px; */
+  height: 50px;
+  width: 50px;
   background-color: transparent;
   border-radius: 50%;
-  bottom: calc(50% - 35px);
-  left: calc(50% - 35px);
+  /* bottom: calc(50% - 35px); for fullscreen
+  left: calc(50% - 35px); */
+  bottom: calc(50% - 25px);
+  left: calc(50% - 25px);
   transition: ease-in-out background-color 0.2s;
   z-index: 10;
 }

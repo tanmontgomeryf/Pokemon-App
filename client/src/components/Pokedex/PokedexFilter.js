@@ -20,7 +20,7 @@ const PokedexFilter = ({ fetchGenerationData, setFullDex }) => {
   return (
     <div className='Pokedex-filters'>
       <button className='Pokedex-filterButton' onClick={handleToggle}>
-        Filter
+        Filter by generation
       </button>
       <PokedexFilterButtons
         handleClick={handleClick}

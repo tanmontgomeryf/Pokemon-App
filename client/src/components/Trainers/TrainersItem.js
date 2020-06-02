@@ -1,14 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { addDefaultTeam } from '../../helpers';
+import { addDefaultTeam, totalTeamPower } from '../../helpers';
 
 const TrainersItem = ({ user }) => {
+  console.log(totalTeamPower(user.pokemonTeam));
   return (
     <div className='TrainersItem'>
       <Link to={`/trainer/${user._id}`}>
         <div className='TrainersItem-items'>
           <h4>
             Trainer: <span>{user.username}</span>
+          </h4>
+          <h4>
+            Team Power Level: <span>{totalTeamPower(user.pokemonTeam)}</span>
           </h4>
           <div className='TrainersItem-pokemonTeam'>
             {addDefaultTeam(user.pokemonTeam).map((pokemon, i) =>

@@ -1,30 +1,110 @@
 .Navbar {
-  background-color: #bd3736;
   height: 10%;
   width: 100%;
-  align-items: center;
+  background-color: #bd3736;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   position: fixed;
   top: 0;
-  z-index: 100;
+  z-index: 10;
 }
 
 .Navbar-logo {
   margin-left: 5%;
-  text-decoration: none;
 }
 
 .Navbar-logo img {
-  width: 160px;
+  max-width: 160px;
 }
 
 .Navbar-icons {
   margin-right: 5%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Navbar-links {
+  position: absolute;
+  height: 100vh;
+  width: 75%;
+  background-color: #bd3736;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  transform: translateX(7.5%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  visibility: visible;
+  transition: 500ms ease-in-out;
+  transition-property: visibility, transform;
+}
+
+.Navbar-links.close {
+  visibility: hidden;
+  transform: translateX(107.5%);
+}
+
+.Navbar-links li {
+  width: 80%;
+  list-style-type: none;
+}
+
+.Navbar-links div {
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  border-bottom: 1px solid white;
+  padding-bottom: 10px;
+}
+
+.Navbar-links li a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid white;
+  padding-bottom: 10px;
+}
+
+.Navbar-links li:first-child {
+  margin-top: 20vh;
+}
+
+.Navbar-links li:last-child {
+  margin-bottom: 40vh;
 }
 
 .Navbar-burger {
-  z-index: 110;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.Navbar-burger .fa.fa-close {
+  position: absolute;
+  top: 28%;
+  right: 5%;
+  color: white;
+  z-index: 11;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  font-size: 1.8rem;
+  text-align: center;
+  visibility: visible;
+  transform: rotate(0deg);
+  transition: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition-property: transform, visibility;
+}
+
+.Navbar-burger .fa.fa-close.close {
+  visibility: hidden;
+}
+
+.Navbar-burger .fa.fa-close:hover {
+  transform: rotate(360deg);
 }
 
 .Navbar-burgerIcon {
@@ -35,194 +115,102 @@
   justify-content: space-around;
 }
 
-.Navbar-burgerIcon.close {
-  display: none;
-}
-
 .Navbar-burgerIcon div {
-  border-top: 3px solid white;
+  width: 100%;
+  border-bottom: 3px solid white;
 }
 
-.Navbar-burgerIcon:hover {
+.Navbar-form .icon {
+  width: 30px;
+  height: 30px;
+  color: white;
+  font-size: 1.5rem;
+  line-height: 30px;
+  text-align: center;
   cursor: pointer;
 }
 
-.Navbar-burger .fa-close {
-  text-align: center;
-  line-height: 32px;
+.Navbar-form .fa.fa-close.icon {
+  position: absolute;
+  top: 28%;
+  right: 5%;
+  color: white;
+  z-index: 12;
   height: 30px;
   width: 30px;
-  font-size: 1.6rem;
-  color: white;
-  position: relative;
-  z-index: 200;
+  line-height: 30px;
+  font-size: 1.8rem;
+  text-align: center;
+  visibility: visible;
   transform: rotate(0deg);
-  transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.Navbar-burger .fa-close.close {
-  display: none;
-}
-
-.Navbar-burger .fa-close:hover {
-  cursor: pointer;
-  -webkit-transform: rotate(360deg);
-  transform: rotate(360deg);
-}
-
-.Navbar-icons {
-  display: flex;
-}
-
-.Navbar-links {
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  transform: translateX(35%);
-  background-color: #bd3736;
-  height: 100vh;
-  width: 75%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  list-style-type: none;
-  z-index: 101;
-  visibility: hidden;
-  transition: 0.5s ease-in-out;
+  transition: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
   transition-property: transform, visibility;
 }
 
-.Navbar-links.open {
-  visibility: visible;
-  transform: translateX(-63.5%);
+.Navbar-form .fa.fa-close.icon.close {
+  visibility: hidden;
 }
 
-.Navbar-links li {
-  width: 80%;
-  height: auto;
-  color: white;
-  cursor: pointer;
-}
-
-.Navbar-links li:first-child {
-  margin-top: 50%;
-}
-
-.Navbar-links li:last-child {
-  margin-bottom: 100%;
-}
-
-.Navbar-links li a {
-  color: white;
-  text-decoration: none;
-  display: block;
-  width: 100%;
-  padding-bottom: 15px;
-  border-bottom: 1px solid white;
-  text-align: start;
-}
-
-.Navbar-links li div {
-  padding-bottom: 15px;
-  border-bottom: 1px solid white;
-  text-align: start;
-}
-
-.Navbar-form {
-  margin-right: 15px;
+.Navbar-form .fa.fa-close.icon:hover {
+  transform: rotate(360deg);
 }
 
 .Navbar-formInput {
-  width: 100vw;
+  position: absolute;
+  transform: translateY(-2.7%);
+  left: 0;
   height: 100vh;
+  width: 100%;
   background-color: #bd3736;
-  position: absolute;
-  transform: translateY(-2.5vh);
-  right: 0;
-  z-index: 125;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   visibility: visible;
-  transition: 0.5s ease-in-out;
-  transition-property: transform, visibility;
-}
-
-.Navbar-formInput input {
-  border: 2px solid white;
-  width: 80vw;
-  height: 5vh;
-  border-radius: 10px;
-  background-color: #bd3736;
-  padding-left: 5px;
-  font-family: 'Fira Sans', sans-serif;
-  color: white;
-}
-
-.Navbar-formInput input::placeholder {
-  font-family: 'Fira Sans', sans-serif;
-  color: rgba(255, 255, 255, 0.3);
-}
-
-.Navbar-formInput input:focus {
-  outline: none;
-}
-
-.Navbar-formInput button {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-  position: absolute;
-  right: calc(50% - 38vw);
-  top: calc(50% - 10px);
-  color: white;
-}
-
-.Navbar-form .fa-close.icon {
-  position: absolute;
-  top: 2.5vh;
-  right: 5vw;
-  z-index: 130;
-  text-align: center;
-  line-height: 32px;
-  height: 30px;
-  width: 30px;
-  font-size: 1.6rem;
-  color: white;
-  visibility: visible;
-  transform: rotate(0deg);
-  transition: all 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.Navbar-form .fa-close.icon:hover {
-  -webkit-transform: rotate(360deg);
-  transform: rotate(360deg);
-}
-
-.Navbar-form .fa-search.icon {
-  text-align: center;
-  line-height: 32px;
-  height: 30px;
-  width: 30px;
-  font-size: 1.6rem;
-  color: white;
-}
-
-.Navbar-form .icon:hover {
-  cursor: pointer;
+  transition: 500ms ease-in-out;
+  transition-property: visibility, transform;
 }
 
 .Navbar-formInput.close {
   visibility: hidden;
-  transform: translateY(-105vh);
+  transform: translateY(-105%);
 }
 
-.fa.icon.close {
-  visibility: hidden;
+.Navbar-formInput form {
+  width: 80%;
+  height: 5%;
+  position: relative;
+}
+
+.Navbar-formInput form input {
+  width: 100%;
+  border: 2px solid white;
+  height: 100%;
+  border-radius: 10px;
+  padding-left: 5%;
+  padding-right: 15%;
+  background-color: #bd3736;
+  color: white;
+}
+
+.Navbar-formInput form input::placeholder {
+  font-family: 'Fira Sans', sans-serif;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.Navbar-formInput form input:focus {
+  outline: none;
+}
+
+.Navbar-formInput form button {
+  border: none;
+  background-color: transparent;
+  color: white;
+  height: 30px;
+  width: 30px;
+  font-size: 1.1rem;
+  text-align: center;
+  line-height: 30px;
+  position: absolute;
+  top: 0;
+  right: 2%;
 }

@@ -154,3 +154,23 @@ export const checkGen = (str) => {
   if (str === 'allGen') result = { num: 0, limit: 100 };
   return result;
 };
+
+export const userFirst = (arr, userName) => {
+  if (userName === null) return arr;
+  const newArr = [...arr];
+  const userIndex = newArr.findIndex((i) => i.username === userName);
+  const userInfo = newArr.splice(userIndex, 1);
+  return [...userInfo, ...newArr];
+};
+
+export const totalTeamPower = (pokemonTeam) => {
+  return [...pokemonTeam].reduce(
+    (accumulator, currentValue) =>
+      accumulator +
+      currentValue.pokemonDetails.stats.reduce(
+        (accumulator, currentValue) => accumulator + currentValue.base_stat,
+        0
+      ),
+    0
+  );
+};

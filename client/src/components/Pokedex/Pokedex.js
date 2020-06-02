@@ -29,10 +29,10 @@ const Pokedex = ({
     <Loader />
   ) : (
     <div className='Pokedex'>
-      {/* <PokedexFilter
+      <PokedexFilter
         fetchGenerationData={fetchGenerationData}
         setFullDex={setFullDex}
-      /> */}
+      />
       <InfiniteScroll
         pageStart={0}
         loadMore={() =>

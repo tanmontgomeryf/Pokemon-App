@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { notLandingPage, register } from '../../redux';
 import { Redirect, Link } from 'react-router-dom';
+import './RegisterStyles.css';
 
 const Register = ({ isAuthenticated, notLandingPage, register }) => {
   useEffect(() => {
@@ -31,7 +32,7 @@ const Register = ({ isAuthenticated, notLandingPage, register }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   return (
-    <div>
+    <div className='Register'>
       <form onSubmit={handleSubmit}>
         <input
           type='text'
