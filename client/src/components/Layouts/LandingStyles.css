@@ -9,7 +9,7 @@
   background-image: url(../../img/Landing2.png);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 350%;
+  background-size: 1200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,6 +22,7 @@
   bottom: 10%;
   border: 3px solid #3b4cca;
   width: 75%;
+  max-width: 500px;
   padding: 15px 30px;
   border-radius: 20px;
   background-color: white;
@@ -34,14 +35,12 @@
 .Landing-button::before {
   position: absolute;
   content: '';
-  /* height: 70px; for fullscreen
-  width: 70px; */
+
   height: 50px;
   width: 50px;
   background-color: transparent;
   border-radius: 50%;
-  /* bottom: calc(50% - 35px); for fullscreen
-  left: calc(50% - 35px); */
+
   bottom: calc(50% - 25px);
   left: calc(50% - 25px);
   transition: ease-in-out background-color 0.2s;
@@ -51,4 +50,17 @@
 .Landing-button:hover::before {
   background-color: #bd3736;
   cursor: pointer;
+}
+
+@media only screen and (min-width: 1125px) {
+  .Landing {
+    background-size: initial;
+  }
+
+  .Landing-button::before {
+    height: 70px;
+    width: 70px;
+    bottom: calc(50% - 35px);
+    left: calc(50% - 35px);
+  }
 }

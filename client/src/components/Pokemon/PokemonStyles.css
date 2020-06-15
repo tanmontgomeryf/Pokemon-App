@@ -1,0 +1,392 @@
+.Pokemon {
+  padding-top: 66.5px;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Pokemon-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.Pokemon-buttons div {
+  font-size: 0.7rem;
+}
+
+.Pokemon-buttons div:first-child {
+  margin-left: 0;
+}
+
+.Pokemon-buttons div:last-child {
+  margin-right: 0;
+}
+
+.PokemonMain {
+  max-width: 330px;
+  display: flex;
+  flex-direction: column;
+}
+
+.PokemonMain-info {
+  margin-bottom: 10%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.PokemonMain-img {
+  width: 90%;
+  margin: 10% auto 10% auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PokemonMain-img img {
+  margin: 0;
+  padding: 0;
+}
+
+.PokemonMain-infoName {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 10%;
+}
+
+.PokemonMain-types {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10%;
+}
+
+.PokemonMain-species {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10%;
+}
+
+.PokemonMain-species > p {
+  margin-left: 10px;
+}
+
+.PokemonMain-htwt {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10%;
+}
+
+.PokemonMain-htwt div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.PokemonMain-htwt div h4,
+.PokemonMain-htwt div p {
+  margin: 5px 0;
+  padding: 0;
+}
+
+.PokemonMain-htwt div p {
+  letter-spacing: 3px;
+}
+
+.PokemonMain-abilitiesGroup {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.PokemonMain-ability {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: auto;
+  width: 100%;
+}
+
+.PokemonMain-ability {
+  position: relative;
+  margin-top: 5px;
+}
+
+.PokemonMainAbilities-title {
+  text-transform: capitalize;
+  cursor: pointer;
+  margin: 5% 0;
+}
+
+.PokemonMainAbilities-title:hover {
+  color: #bd3736;
+}
+
+.PokemonMainAbilities-body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  background-color: #bd3736;
+  text-align: center;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  padding: 15px;
+}
+
+.PokemonMainAbilities-body.close {
+  display: none;
+}
+
+.btn-ability {
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 1.2rem;
+  position: absolute;
+  top: 1px;
+  right: 5px;
+}
+
+.btn-ability:hover {
+  cursor: pointer;
+}
+
+.btn-ability:focus {
+  outline: 0;
+}
+
+.PokemonDescription {
+  margin-bottom: 10%;
+  max-width: 330px;
+}
+
+.PokemonDescription > h4 {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.PokemonDescription-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.PokemonDescription-title {
+  order: 1;
+  flex-grow: 1;
+  cursor: pointer;
+  text-transform: capitalize;
+  text-align: center;
+  margin: 5% 0;
+}
+
+.PokemonDescription-title:hover,
+.PokemonDescription-title:focus {
+  color: #bd3736;
+}
+
+.PokemonDescription-title.active {
+  color: rgba(0, 0, 0, 0.4);
+  cursor: default;
+}
+
+.PokemonDescription-description {
+  order: 2;
+  flex-grow: 2;
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 5% 10%;
+  border-radius: 10px;
+  color: white;
+  background-color: #bd3736;
+}
+
+.PokemonDescription-description.close {
+  display: none;
+}
+
+.Pokemon-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.PokemonBaseStats {
+  margin-bottom: 10%;
+  max-width: 330px;
+}
+
+.PokemonBaseStats > h4 {
+  text-align: center;
+  margin-bottom: 5%;
+}
+
+.PokemonEvoChain {
+  max-width: 330px;
+}
+
+.PokemonEvoChain > h4 {
+  text-align: center;
+  margin-bottom: 5%;
+}
+
+.PokemonEvoChain-group {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 10%;
+}
+
+.PokemonEvoChain-group a {
+  margin-top: 5%;
+  width: 30%;
+}
+
+.PokemonEvoChain-group div {
+  height: auto;
+  width: 100%;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.3);
+}
+
+.PokemonEvoChain-group div p {
+  margin: 10% 0 5% 0;
+  font-size: 0.6rem;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 360px) {
+  .Pokemon-buttons div {
+    font-size: 0.9rem;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .PokemonDescription-description {
+    font-size: 0.9rem;
+    padding: 5% 10%;
+  }
+}
+
+@media only screen and (min-width: 650px) {
+  .Pokemon {
+    max-width: 800px;
+  }
+  .Pokemon-buttons > div {
+    margin: 25px;
+  }
+
+  .PokemonMain {
+    flex-direction: row;
+    max-width: unset;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .PokemonMain-img {
+    width: 47.5%;
+    max-width: 500px;
+    margin: 5% 0 5% 0;
+  }
+
+  .PokemonMain-img img {
+    width: 100%;
+  }
+
+  .PokemonMain-info {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 47.5%;
+    justify-content: flex-start;
+  }
+
+  .PokemonMain-infoName {
+    text-align: left;
+  }
+
+  .PokemonMain-info > div {
+    justify-content: flex-start;
+    margin-bottom: 5%;
+  }
+
+  .PokemonMain-info div:last-child {
+    margin-bottom: 0;
+  }
+
+  .PokemonMain-infoName {
+    margin-left: 0;
+    margin-bottom: 5%;
+  }
+
+  .PokemonMain-htwt .PokemonMain-wt {
+    margin-right: 25%;
+  }
+
+  .PokemonMain-abilitiesGroup {
+    align-items: flex-start;
+  }
+
+  .PokemonMain-abilitiesGroup .PokemonMain-ability {
+    align-items: flex-start;
+  }
+
+  .PokemonDescription {
+    max-width: 800px;
+  }
+
+  .PokemonDescription-title {
+    margin: 3% 0;
+  }
+
+  .PokemonDescription {
+    margin-bottom: 5%;
+  }
+
+  .PokemonDescription-description {
+    font-size: 1rem;
+    padding: 5% 10%;
+  }
+
+  .Pokemon-section {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 10%;
+  }
+
+  .PokemonBaseStats {
+    width: 47.5%;
+    max-width: unset;
+    margin: 0;
+  }
+
+  .PokemonEvoChain {
+    width: 47.5%;
+    max-width: unset;
+  }
+
+  .PokemonEvoChain-group {
+    margin: 0;
+  }
+}

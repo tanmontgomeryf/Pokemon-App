@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { deletePokemon } from '../../redux';
 import { checkPokemon } from '../../helpers';
 import Nickname from '../Forms/Nickname';
+import TrainerPokemonPowerLevel from './TrainerPokemonPowerLevel';
 
 const TrainerPokemon = ({
   pokemon: { pokemonDetails, nickname, _id },
@@ -11,16 +12,22 @@ const TrainerPokemon = ({
   paramsUserId,
   deletePokemon,
 }) => {
-  const { types, name } = pokemonDetails;
+  const { types, name, stats } = pokemonDetails;
+  const baseStats = [...stats].reduce(
+    (accumulator, currentValue) => accumulator + currentValue.base_stat,
+    0
+  );
   const handleDelete = () => {
     deletePokemon(currentUser._id, _id);
   };
   return (
-    <div>
-      <div>
-        {isAuthenticated && currentUser._id === paramsUserId && (
-          <button onClick={handleDelete}>x</button>
-        )}
+    <div className='TrainerPokemon'>
+      {isAuthenticated && currentUser._id === paramsUserId && (
+        <button className='TrainerPokemon-delete' onClick={handleDelete}>
+          x
+        </button>
+      )}
+      <div className='TrainerPokemon-img'>
         <img
           src={`https://img.pokemondb.net/sprites/home/normal/${checkPokemon(
             name
@@ -31,25 +38,36 @@ const TrainerPokemon = ({
             e.target.src =
               'https://cdn.bulbagarden.net/upload/a/a1/Substitute_artwork.png';
           }}
-          className='PokedexItem-img'
         />
       </div>
-      <div>
-        {isAuthenticated && currentUser._id === paramsUserId ? (
-          <Nickname
-            nickname={nickname}
-            pokemonId={_id}
-            currentUserId={currentUser._id}
-          />
-        ) : (
-          <h4>{nickname}</h4>
-        )}
+      <div className='TrainerPokemon-info'>
+        <div>
+          <p>Nickname:</p>
+          {isAuthenticated && currentUser._id === paramsUserId ? (
+            <Nickname
+              nickname={nickname}
+              pokemonId={_id}
+              currentUserId={currentUser._id}
+            />
+          ) : (
+            <h4>{nickname}</h4>
+          )}
+        </div>
 
-        {types.map((type) => (
-          <div className={`types type-${type.type.name}`} key={type.type.name}>
-            {type.type.name}
-          </div>
-        ))}
+        <div className='TrainerPokemon-infoTypes'>
+          {types.map((type) => (
+            <div
+              className={`types type-${type.type.name}`}
+              key={type.type.name}
+            >
+              {type.type.name}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className='TrainerPokemon-infoPL'>
+        <p>Base Stat Total: {baseStats}</p>
+        <TrainerPokemonPowerLevel baseStats={baseStats} />
       </div>
     </div>
   );

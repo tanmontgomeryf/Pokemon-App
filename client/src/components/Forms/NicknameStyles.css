@@ -1,0 +1,30 @@
+.Nickname {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.Nickname h4 {
+  margin-right: 5%;
+}
+
+.Nickname input {
+  width: 100%;
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 1.2px;
+}
+
+.Nickname input:focus {
+  border: 1px solid black;
+}
+
+.Nickname button {
+  max-height: 21px;
+}
+
+.fas.fa-pen {
+  font-size: 0.6rem;
+}

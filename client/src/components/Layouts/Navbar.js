@@ -8,7 +8,7 @@ import logo from '../../img/AppLogo.png';
 const Navbar = () => {
   return (
     <div className='Navbar'>
-      <Link to='/' className='Navbar-logo'>
+      <Link to='/pokedex' className='Navbar-logo'>
         <img src={logo} alt='logo' />
       </Link>
       <div className='Navbar-icons'>

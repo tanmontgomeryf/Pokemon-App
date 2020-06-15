@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchUsersData, notLandingPage } from '../../redux';
 import { userFirst } from '../../helpers';
@@ -12,6 +13,8 @@ const Trainers = ({
   notLandingPage,
   fetchUsersData,
 }) => {
+  const history = useHistory();
+  const handleClick = () => history.goBack();
   useEffect(() => {
     notLandingPage();
     fetchUsersData();
@@ -20,6 +23,12 @@ const Trainers = ({
     <Loader />
   ) : (
     <div className='Trainers'>
+      <div
+        onClick={handleClick}
+        className='buttons type-primary button-trainers'
+      >
+        Go Back
+      </div>
       {isAuthenticated
         ? userFirst(users, user.username).map((user) => (
             <TrainersItem key={user._id} user={user} />

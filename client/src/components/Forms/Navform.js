@@ -8,7 +8,7 @@ const Navform = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    history.push(`/${formData}`);
+    history.push(`/${formData.toLowerCase()}`);
     setToggle(!toggle);
     setFormData('');
   };

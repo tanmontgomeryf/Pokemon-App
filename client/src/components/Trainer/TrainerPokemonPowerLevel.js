@@ -1,23 +1,28 @@
 import React from 'react';
 import { HorizontalBar } from 'react-chartjs-2';
 
-const PokemonBaseStats = ({ stats }) => {
-  const baseStats = [...stats];
+const TrainerPokemonPowerLevel = ({ stats, baseStats }) => {
   const data = {
-    labels: ['Hp', 'Att', 'Def', 'SpA', 'SpD', 'Spd'],
+    labels: ['Base Stats Total'],
     datasets: [
       {
         backgroundColor: 'rgba(189,55,54,1)',
         hoverBackgroundColor: 'rgba(189,55,54,.5)',
-        data: baseStats.map((stat) => stat.base_stat),
+        barThickness: 15,
+        data: [baseStats],
       },
     ],
   };
 
   const options = {
+    tooltips: { enabled: false },
+    hover: { mode: null },
     layout: {
       padding: {
-        right: 5,
+        right: 2,
+        top: 1,
+        left: 1,
+        bottom: 1,
       },
     },
     animation: {
@@ -25,7 +30,7 @@ const PokemonBaseStats = ({ stats }) => {
       easing: 'linear',
     },
     responsive: true,
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     legend: {
       display: false,
     },
@@ -34,8 +39,17 @@ const PokemonBaseStats = ({ stats }) => {
         {
           ticks: {
             min: 0,
-            max: 255,
-            stepSize: 15,
+            max: 720,
+            display: false,
+          },
+          gridLines: {
+            drawTicks: false,
+          },
+        },
+      ],
+      yAxes: [
+        {
+          ticks: {
             display: false,
           },
           gridLines: {
@@ -46,11 +60,10 @@ const PokemonBaseStats = ({ stats }) => {
     },
   };
   return (
-    <div className='PokemonBaseStats'>
-      <h4>Base Stats:</h4>
+    <div className='TrainerPokemonPowerLevel'>
       <HorizontalBar data={data} options={options} />
     </div>
   );
 };
 
-export default PokemonBaseStats;
+export default TrainerPokemonPowerLevel;

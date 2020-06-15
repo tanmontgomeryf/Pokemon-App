@@ -7,6 +7,7 @@ import PokemonMain from './PokemonMain';
 import PokemonDescription from './PokemonDescription';
 import Loader from '../Layouts/Loader';
 import { checkRequestPokemon } from '../../helpers';
+import './PokemonStyles.css';
 
 const Pokemon = ({
   pokemon: { loading, pokemon, error },
@@ -41,7 +42,7 @@ const Pokemon = ({
   if (auth.user !== null) {
     result =
       auth.user.pokemonTeam.length >= 6 ? (
-        <div className='buttons type-primary disabled'>Team is full</div>
+        <div className='buttons type-danger disabled'>Team is full</div>
       ) : (
         <div onClick={handleAddPokemon} className='buttons type-primary'>
           Add to team
@@ -53,19 +54,24 @@ const Pokemon = ({
     <Loader />
   ) : (
     <div className='Pokemon'>
-      <div onClick={handleClick} className='buttons type-primary'>
-        Go Back
+      <div className='Pokemon-buttons'>
+        <div onClick={handleClick} className='buttons type-primary'>
+          Go Back
+        </div>
+        {!auth.loading && auth.isAuthenticated && pokemon !== null && result}
       </div>
-      {!auth.loading && auth.isAuthenticated && pokemon !== null && result}
       {error === null && pokemon !== null && (
         <>
           <PokemonMain pokemon={pokemon} />
           <PokemonDescription description={pokemon.description} />
-          <PokemonBaseStats stats={pokemon.stats} />
-          <PokemonEvoChain
-            evolutionChain={pokemon.evolutionChain}
-            id={pokemon.id}
-          />
+          <div className='Pokemon-section'>
+            <PokemonBaseStats stats={pokemon.stats} />
+            <PokemonEvoChain
+              evolutionChain={pokemon.evolutionChain}
+              id={pokemon.id}
+              idOrName={idOrName}
+            />
+          </div>
         </>
       )}
     </div>

@@ -20,35 +20,43 @@ body,
   height: 100%;
 }
 
-/* 
+h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+img {
+  width: 100%;
+}
+
 a {
   text-decoration: none;
   color: black;
-} */
-
-/* .buttons {
-  margin-right: 1vw;
-  font-weight: 600;
-  padding: 2px 5px;
-  width: 100px;
-  background: #dbdbdb;
-  border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  color: #fff;
-  text-align: center;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-  text-transform: uppercase;
-  transition: ease-in-out opacity 0.2s;
-  cursor: pointer;
 }
 
-.buttons:last-child {
-  margin-right: 0;
+h4,
+p {
+  margin: 0;
+  padding: 0;
+  cursor: default;
+}
+
+.buttons {
+  margin: 5% 5%;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: 'Fira Sans', sans-serif;
+  letter-spacing: 1.2px;
+  border: none;
 }
 
 .buttons:hover {
   opacity: 0.5;
-} */
+}
 
 .type-primary {
   background: #007bff;
@@ -70,15 +78,17 @@ a {
   background: #17a2b8;
 }
 
-/* .disabled {
+.disabled {
   cursor: not-allowed;
-  opacity: 0.5;
-} */
+  background-color: rgba(0, 0, 0, 0.3);
+}
 
-/* .types {
-  margin-left: 1vw;
+.types {
+  margin-left: 15px;
   font-weight: 600;
-  width: 120px;
+  width: 100%;
+  max-width: 120px;
+  max-height: 30px;
   padding: 3px 0;
   background: #dbdbdb;
   border-radius: 5px;
@@ -88,7 +98,7 @@ a {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
   text-transform: uppercase;
   cursor: default;
-} */
+}
 
 .type-normal {
   background-color: #aa9;
@@ -162,7 +172,7 @@ a {
   background-color: #e9e;
 }
 
-.Pokemon {
+/* .Pokemon {
   margin: 0 auto;
   width: 80vw;
   display: flex;
@@ -187,7 +197,7 @@ a {
 .PokemonMain-types {
   display: flex;
   align-items: center;
-}
+} */
 
 .Pokedex-loader {
   display: flex;

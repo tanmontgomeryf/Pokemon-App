@@ -177,10 +177,12 @@ export const editNickName = (userId, pokemonId, nickname) => async (
 };
 
 export const deleteUser = (userId) => async (dispatch) => {
-  try {
-    await axios.delete(`/user/${userId}`);
-    dispatch(deleteUserSuccess(userId));
-  } catch (error) {
-    dispatch(deleteUserError(error));
+  if (window.confirm('Are you sure? this can NOT be undone!')) {
+    try {
+      await axios.delete(`/user/${userId}`);
+      dispatch(deleteUserSuccess(userId));
+    } catch (error) {
+      dispatch(deleteUserError(error));
+    }
   }
 };

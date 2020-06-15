@@ -37,13 +37,14 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  visibility: visible;
+  /* visibility: visible;
   transition: 500ms ease-in-out;
-  transition-property: visibility, transform;
+  transition-property: visibility, transform; */
 }
 
 .Navbar-links.close {
-  visibility: hidden;
+  /* visibility: hidden; */
+  display: none;
   transform: translateX(107.5%);
 }
 
@@ -93,19 +94,20 @@
   line-height: 30px;
   font-size: 1.8rem;
   text-align: center;
-  visibility: visible;
+  /* visibility: visible;
   transform: rotate(0deg);
   transition: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  transition-property: transform, visibility;
+  transition-property: transform, visibility; */
 }
 
 .Navbar-burger .fa.fa-close.close {
-  visibility: hidden;
+  /* visibility: hidden; */
+  display: none;
 }
 
-.Navbar-burger .fa.fa-close:hover {
+/* .Navbar-burger .fa.fa-close:hover {
   transform: rotate(360deg);
-}
+} */
 
 .Navbar-burgerIcon {
   height: 30px;
@@ -141,19 +143,20 @@
   line-height: 30px;
   font-size: 1.8rem;
   text-align: center;
-  visibility: visible;
+  /* visibility: visible;
   transform: rotate(0deg);
   transition: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  transition-property: transform, visibility;
+  transition-property: transform, visibility; */
 }
 
 .Navbar-form .fa.fa-close.icon.close {
-  visibility: hidden;
+  /* visibility: hidden; */
+  display: none;
 }
 
-.Navbar-form .fa.fa-close.icon:hover {
+/* .Navbar-form .fa.fa-close.icon:hover {
   transform: rotate(360deg);
-}
+} */
 
 .Navbar-formInput {
   position: absolute;
@@ -165,13 +168,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  visibility: visible;
+  /* visibility: visible;
   transition: 500ms ease-in-out;
-  transition-property: visibility, transform;
+  transition-property: visibility, transform; */
 }
 
 .Navbar-formInput.close {
-  visibility: hidden;
+  /* visibility: hidden; */
+  display: none;
   transform: translateY(-105%);
 }
 
@@ -183,7 +187,7 @@
 
 .Navbar-formInput form input {
   width: 100%;
-  border: 2px solid white;
+  border: 2px solid rgb(255, 122, 122);
   height: 100%;
   border-radius: 10px;
   padding-left: 5%;
@@ -204,7 +208,7 @@
 .Navbar-formInput form button {
   border: none;
   background-color: transparent;
-  color: white;
+  color: rgb(255, 122, 122);
   height: 30px;
   width: 30px;
   font-size: 1.1rem;
@@ -213,4 +217,105 @@
   position: absolute;
   top: 0;
   right: 2%;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 950px) {
+  .Navbar-icons {
+    width: 70%;
+  }
+
+  .Navbar-links {
+    display: flex;
+    position: initial;
+    visibility: visible;
+    transform: initial;
+    height: initial;
+    width: initial;
+    width: 50%;
+    max-width: 320px;
+    flex-direction: row;
+    justify-content: flex-end;
+    transition: unset;
+  }
+
+  .Navbar-links.close {
+    display: flex;
+    position: initial;
+    visibility: visible;
+    transform: initial;
+    height: initial;
+    width: initial;
+    width: 50%;
+    max-width: 320px;
+    flex-direction: row;
+    justify-content: flex-end;
+    transition: unset;
+  }
+
+  .Navbar-links > li {
+    margin: 0;
+    margin-left: 3%;
+    width: unset;
+  }
+
+  .Navbar-links li:first-child {
+    margin: 0;
+    margin-left: 3%;
+  }
+
+  .Navbar-links li:last-child {
+    margin: 0;
+    margin-left: 3%;
+  }
+
+  .Navbar-form {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 50%;
+  }
+
+  .Navbar-form .fa.fa-close.icon {
+    display: none;
+  }
+
+  .Navbar-formInput {
+    display: flex;
+    visibility: unset;
+    transform: unset;
+    height: unset;
+    width: 100%;
+    position: initial;
+    transition: unset;
+    justify-content: flex-end;
+  }
+
+  .Navbar-formInput.close {
+    display: flex;
+    visibility: unset;
+    transform: unset;
+    height: unset;
+    width: 100%;
+    position: initial;
+    transition: unset;
+    justify-content: flex-end;
+  }
+
+  .Navbar-formInput form {
+    width: 80%;
+    height: 30px;
+  }
+
+  .Navbar-burger {
+    display: none;
+  }
+
+  .fa.fa-close.close {
+    display: none;
+  }
+
+  .fas.fa-search.icon {
+    display: none;
+  }
 }

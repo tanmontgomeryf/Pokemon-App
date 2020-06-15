@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { addDefaultTeam, totalTeamPower } from '../../helpers';
 
 const TrainersItem = ({ user }) => {
-  console.log(totalTeamPower(user.pokemonTeam));
   return (
     <div className='TrainersItem'>
       <Link to={`/trainer/${user._id}`}>
@@ -37,7 +36,7 @@ const TrainersItem = ({ user }) => {
                   />
                   <p>{pokemon.nickname}</p>
                   <div className='TrainersItem-typesDiv'>
-                    {pokemon.pokemonDetails.types.reverse().map((type) => (
+                    {pokemon.pokemonDetails.types.map((type) => (
                       <div
                         className={`TrainersItem-types type-${type.type.name}`}
                         key={type.type.name}

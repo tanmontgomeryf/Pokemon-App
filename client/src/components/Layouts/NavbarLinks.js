@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-
+import { NavLink, useHistory } from 'react-router-dom';
 import { logout } from '../../redux';
 
 const NavbarLinks = ({
@@ -10,7 +9,9 @@ const NavbarLinks = ({
   auth,
   isOpen,
   handleClick,
+  setToggle,
 }) => {
+  const history = useHistory();
   return (
     <ul className={`Navbar-links ${isOpen ? null : 'close'}`}>
       <li onClick={handleClick}>
@@ -50,7 +51,15 @@ const NavbarLinks = ({
             </NavLink>
           </li>
           <li>
-            <div onClick={() => logout()}>Logout</div>
+            <div
+              onClick={() => {
+                logout();
+                setToggle(!isOpen);
+                history.push('/pokedex');
+              }}
+            >
+              Logout
+            </div>
           </li>
         </>
       ) : (

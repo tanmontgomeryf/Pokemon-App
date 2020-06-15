@@ -1,3 +1,42 @@
 .Login {
-  padding-top: 10vh;
+  width: 80%;
+  height: 50%;
+  position: absolute;
+  top: calc(50% - 25%);
+  right: calc(50% - 40%);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.Login > h4 {
+  margin: 10%;
+}
+
+.Login > p {
+  font-size: 0.5rem;
+  margin-bottom: 10%;
+}
+
+.Login p:hover a {
+  color: #bd3736;
+  text-decoration: underline;
+}
+
+.Login-form {
+  width: 80%;
+  height: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.Login-form input {
+  border: none;
+  background-color: rgba(50, 50, 50, 0.1);
+  padding: 5% 5%;
+}
+
+.Login-form input:focus {
+  outline: 2px solid #bd3736;
 }

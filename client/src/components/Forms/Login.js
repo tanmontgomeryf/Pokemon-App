@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { notLandingPage, login } from '../../redux';
 import { Redirect } from 'react-router-dom';
 import './LoginStyles.css';
@@ -30,7 +31,8 @@ const Login = ({ notLandingPage, login, isAuthenticated }) => {
 
   return (
     <div className='Login'>
-      <form onSubmit={(e) => handleOnSubmit(e)}>
+      <h4>Login</h4>
+      <form onSubmit={(e) => handleOnSubmit(e)} className='Login-form'>
         <input
           type='email'
           name='email'
@@ -39,6 +41,7 @@ const Login = ({ notLandingPage, login, isAuthenticated }) => {
           onChange={(e) => handleOnChange(e)}
           required
         />
+
         <input
           type='password'
           name='password'
@@ -48,8 +51,13 @@ const Login = ({ notLandingPage, login, isAuthenticated }) => {
           minLength='6'
           required
         />
-        <input type='submit' value='Login' className='buttons type-primary' />
+        <button type='submit' className='buttons type-primary'>
+          Login
+        </button>
       </form>
+      <p>
+        Not Registed? <Link to='/register'>Create an account</Link>
+      </p>
     </div>
   );
 };

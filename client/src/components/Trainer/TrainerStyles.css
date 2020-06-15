@@ -2,25 +2,140 @@
   padding-top: 10vh;
 }
 
-.Trainer-button {
-  margin: 5% 5%;
-  height: fit-content;
-  width: fit-content;
-  padding: 10px 20px;
-  border-radius: 10px;
-  color: white;
-  font-weight: 600;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.Trainer-button:hover {
-  opacity: 0.5;
+.buttons.button-delete {
+  font-size: 0.6rem;
+  margin-bottom: 0;
+  padding: 8px 24px;
+  border-radius: 8px;
 }
 
 .Trainer-card {
   width: 90%;
-  margin: 0 auto;
+  margin: 0 auto 10%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.TrainerMain {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10% 0;
+}
+
+.TrainerMain > h4 {
+  margin-bottom: 10%;
+}
+
+.TrainerMain > div {
+  text-align: center;
+  width: 100%;
+}
+
+.TrainerMain div h4,
+.TrainerMain div p {
+  font-size: 0.9rem;
+}
+
+.TrainerMain div p {
+  margin: 3% 0;
+}
+
+.Trainer-cardTitle {
+  text-transform: capitalize;
+}
+
+.Trainer-pokemonGroup {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.TrainerPokemon {
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-bottom: 10%;
+}
+
+.TrainerPokemon:last-child {
+  margin-bottom: 0;
+}
+
+.TrainerPokemon-img {
+  width: 37.5%;
+  max-width: 125px;
+  margin-bottom: 3%;
+}
+
+.TrainerPokemon-info {
+  width: 57.5%;
+  height: 100%;
+  margin: auto 0 3%;
+  display: flex;
+  flex-direction: column;
+}
+
+.TrainerPokemon-info > div {
+  margin-bottom: 5%;
+}
+
+.TrainerPokemon-info h4 {
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+
+.TrainerPokemon-info p {
+  font-size: 0.7rem;
+  margin-bottom: 1%;
+}
+
+.TrainerPokemon-info .TrainerPokemon-infoTypes {
+  display: flex;
+  justify-content: space-between;
+}
+
+.TrainerPokemon-info .TrainerPokemon-infoTypes div {
+  margin: 0;
+  padding: 2% 6%;
+  width: 100%;
+  max-width: 50%;
+  font-size: 0.7rem;
+}
+
+.TrainerPokemon-info .TrainerPokemon-infoTypes div + div {
+  margin-left: 3px;
+}
+
+.TrainerPokemon-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.TrainerPokemon-infoPL {
+  width: 100%;
+}
+
+.TrainerPokemon-infoPL p {
+  font-size: 0.7rem;
+  margin-bottom: 3%;
+}
+
+.TrainerPokemonPowerLevel {
+  height: 30px;
+  width: 100%;
+  position: relative;
 }

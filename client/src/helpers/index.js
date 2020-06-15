@@ -75,8 +75,10 @@ export const cleanEvolutionChain = (obj) => {
 
 export const cleanAbilities = (abilities, abilityDescriptions) => {
   //get description
-  const Abilitydescriptions = abilityDescriptions.map((data) => ({
-    description: data.effect_entries[0].short_effect,
+  const descriptions = abilityDescriptions.map((data) => ({
+    description: data.effect_entries
+      .filter((data) => data.language.name === 'en')
+      .map((data) => data.short_effect)[0],
   }));
   //clean abilities data
   const cleanAbilities = abilities.map((ability) => ({
@@ -88,7 +90,7 @@ export const cleanAbilities = (abilities, abilityDescriptions) => {
 
   //group abilitydescriptions to clean ability data
   for (let i = 0; i < cleanAbilities.length; i++) {
-    finalAbility.push({ ...cleanAbilities[i], ...Abilitydescriptions[i] });
+    finalAbility.push({ ...cleanAbilities[i], ...descriptions[i] });
   }
 
   return finalAbility;
@@ -173,4 +175,11 @@ export const totalTeamPower = (pokemonTeam) => {
       ),
     0
   );
+};
+
+export const pokemonSpeciesEn = (pokemonSpecies) => {
+  const englishSpecies = [...pokemonSpecies].filter(
+    (desc) => desc.language.name === 'en'
+  );
+  return englishSpecies[0];
 };

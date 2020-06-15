@@ -49,6 +49,7 @@
 .PokedexItem-title {
   margin: 20px 0 10px 0;
   transition: ease-in-out 0.2s;
+  font-size: 1rem;
 }
 
 .PokedexItem-item:hover .PokedexItem-title {
@@ -140,15 +141,26 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   letter-spacing: 2px;
   font-size: 0.625rem;
-  /* background-color: #bd3736;
-  padding: 5px 10px;
-  border-radius: 10px;
-  color: white;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  transition: 0.3s ease-in-out; */
 }
 
 .Pokedex-filters .Pokedex-filterButton:hover {
   opacity: 0.5;
+}
+
+@media only screen and (min-width: 550px) {
+  .Pokedex-Grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  .Pokedex-Grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media only screen and (min-width: 950px) {
+  .Pokedex-Grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }

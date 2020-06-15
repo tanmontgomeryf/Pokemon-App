@@ -49,6 +49,7 @@ router.get('/:pokemon_id_name', async (req, res) => {
     //get species description
     const speciesDescription = allPromisesdata[0].flavor_text_entries;
     const speciesVariation = allPromisesdata[0].varieties;
+    const pokemonSpecies = allPromisesdata[0].genera;
 
     //get description
     const fetchedAbilityDescription = allPromisesdata.splice(1);
@@ -64,6 +65,7 @@ router.get('/:pokemon_id_name', async (req, res) => {
       abilityDescriptions: fetchedAbilityDescription,
       evolutionChain: evolutionChain.data,
       varieties: speciesVariation,
+      pokemonSpecies: pokemonSpecies,
     });
   } catch (error) {
     console.error(error);
