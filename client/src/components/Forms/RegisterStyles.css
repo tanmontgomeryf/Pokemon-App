@@ -1,20 +1,22 @@
 .Register {
   width: 80%;
+  max-width: 400px;
   height: 60%;
-  position: absolute;
-  top: calc(50% - 25%);
-  right: calc(50% - 40%);
+  margin: 25vh auto 0;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .Register > h4 {
-  margin: 10%;
+  margin-bottom: 40px;
 }
 
 .Register > p {
   font-size: 0.5rem;
-  margin-bottom: 10%;
+  margin-top: 20px;
 }
 
 .Register p:hover a {
@@ -24,19 +26,22 @@
 
 .Register-form {
   width: 80%;
-  height: 70%;
-  margin: auto;
+  height: 60%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .Register-form input {
   border: none;
   background-color: rgba(50, 50, 50, 0.1);
-  padding: 5% 5%;
+  padding: 12px;
 }
 
 .Register-form input:focus {
   outline: 2px solid #bd3736;
+}
+
+.Register-form > button {
+  margin: 0;
 }

@@ -10,11 +10,7 @@ const NavbarBurger = () => {
   return (
     <>
       <NavbarBurgerIcon isOpen={toggle} handleClick={handleClick} />
-      <NavbarLinks
-        isOpen={toggle}
-        handleClick={handleClick}
-        setToggle={setToggle}
-      />
+      <NavbarLinks isOpen={toggle} setToggle={setToggle} />
     </>
   );
 };

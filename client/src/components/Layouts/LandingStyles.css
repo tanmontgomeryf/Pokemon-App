@@ -52,7 +52,7 @@
   cursor: pointer;
 }
 
-@media only screen and (min-width: 1125px) {
+@media only screen and (min-width: 850px) {
   .Landing {
     background-size: initial;
   }
@@ -62,5 +62,9 @@
     width: 70px;
     bottom: calc(50% - 35px);
     left: calc(50% - 35px);
+  }
+
+  .Landing::after {
+    bottom: 6.5%;
   }
 }

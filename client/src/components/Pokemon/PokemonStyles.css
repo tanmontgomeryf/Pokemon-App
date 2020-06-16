@@ -226,16 +226,25 @@
 .Pokemon-section {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .PokemonBaseStats {
   margin-bottom: 10%;
+  width: 100%;
   max-width: 330px;
+  position: relative;
 }
 
 .PokemonBaseStats > h4 {
   text-align: center;
   margin-bottom: 5%;
+}
+
+.PokemonBaseStats-chart {
+  width: 100%;
 }
 
 .PokemonEvoChain {

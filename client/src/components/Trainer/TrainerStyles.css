@@ -1,5 +1,12 @@
 .Trainer {
   padding-top: 10vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.Trainer > .buttons {
+  align-self: center;
 }
 
 .buttons.button-delete {
@@ -22,11 +29,12 @@
 
 .TrainerMain {
   width: 100%;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 10% 0;
+  margin: 30px 0;
 }
 
 .TrainerMain > h4 {
@@ -53,10 +61,15 @@
 
 .Trainer-pokemonGroup {
   width: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 3%;
+  justify-items: center;
+}
+
+.Trainer-pokemonGroup a {
+  width: 100%;
+  max-width: 350px;
 }
 
 .TrainerPokemon {
@@ -67,11 +80,6 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  margin-bottom: 10%;
-}
-
-.TrainerPokemon:last-child {
-  margin-bottom: 0;
 }
 
 .TrainerPokemon-img {
@@ -82,7 +90,6 @@
 
 .TrainerPokemon-info {
   width: 57.5%;
-  height: 100%;
   margin: auto 0 3%;
   display: flex;
   flex-direction: column;
@@ -138,4 +145,40 @@
   height: 30px;
   width: 100%;
   position: relative;
+}
+
+@media only screen and (min-width: 415px) {
+  .Trainer > .buttons {
+    margin: 20px 0;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .Trainer > .buttons {
+    margin: 20px 10%;
+  }
+
+  .Trainer-pokemonGroup {
+    grid-template-columns: repeat(2, 50%);
+  }
+
+  .TrainerMain {
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 800px;
+    text-align: center;
+  }
+
+  .TrainerMain > h4 {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .TrainerMain > div {
+    width: 30%;
+  }
+
+  .TrainerMain > .buttons.button-delete {
+    margin-top: 30px;
+  }
 }

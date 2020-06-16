@@ -25,7 +25,7 @@ const PokemonBaseStats = ({ stats }) => {
       easing: 'linear',
     },
     responsive: true,
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     legend: {
       display: false,
     },
@@ -48,7 +48,9 @@ const PokemonBaseStats = ({ stats }) => {
   return (
     <div className='PokemonBaseStats'>
       <h4>Base Stats:</h4>
-      <HorizontalBar data={data} options={options} />
+      <div className='PokemonBaseStats-chart'>
+        <HorizontalBar data={data} options={options} />
+      </div>
     </div>
   );
 };

@@ -3,15 +3,11 @@ import { connect } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import { logout } from '../../redux';
 
-const NavbarLinks = ({
-  isAuthenticated,
-  logout,
-  auth,
-  isOpen,
-  handleClick,
-  setToggle,
-}) => {
+const NavbarLinks = ({ isAuthenticated, logout, auth, isOpen, setToggle }) => {
   const history = useHistory();
+  const handleClick = () => {
+    setToggle(false);
+  };
   return (
     <ul className={`Navbar-links ${isOpen ? null : 'close'}`}>
       <li onClick={handleClick}>

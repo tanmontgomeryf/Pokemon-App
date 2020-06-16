@@ -29,11 +29,13 @@ const Trainers = ({
       >
         Go Back
       </div>
-      {isAuthenticated
-        ? userFirst(users, user.username).map((user) => (
-            <TrainersItem key={user._id} user={user} />
-          ))
-        : users.map((user) => <TrainersItem key={user._id} user={user} />)}
+      <div className='Trainers-group'>
+        {isAuthenticated
+          ? userFirst(users, user.username).map((user) => (
+              <TrainersItem key={user._id} user={user} />
+            ))
+          : users.map((user) => <TrainersItem key={user._id} user={user} />)}
+      </div>
     </div>
   );
 };

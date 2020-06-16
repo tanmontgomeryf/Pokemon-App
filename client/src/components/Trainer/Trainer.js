@@ -42,19 +42,22 @@ const Trainer = ({
             handleUserDelete={handleUserDelete}
           />
           <div className='Trainer-pokemonGroup'>
-            {users.user.pokemonTeam.map((pokemon) =>
+            {users.user.pokemonTeam.length === 0 ? (
               users.user !== null &&
               auth.user !== null &&
               users.user._id === auth.user._id ? (
-                <TrainerPokemon
-                  key={pokemon._id}
-                  pokemon={pokemon}
-                  paramsUserId={userId}
-                  currentUser={auth.user}
-                  isAuthenticated={auth.isAuthenticated}
-                />
+                <p>
+                  You don't have a pokemon, please go to your pokedex and add
+                  one to your team
+                </p>
               ) : (
-                <Link to={`/${pokemon.pokemonDetails.id}`}>
+                <p>This username doesn't have a pokemon yet</p>
+              )
+            ) : (
+              users.user.pokemonTeam.map((pokemon) =>
+                users.user !== null &&
+                auth.user !== null &&
+                users.user._id === auth.user._id ? (
                   <TrainerPokemon
                     key={pokemon._id}
                     pokemon={pokemon}
@@ -62,7 +65,17 @@ const Trainer = ({
                     currentUser={auth.user}
                     isAuthenticated={auth.isAuthenticated}
                   />
-                </Link>
+                ) : (
+                  <Link to={`/${pokemon.pokemonDetails.id}`}>
+                    <TrainerPokemon
+                      key={pokemon._id}
+                      pokemon={pokemon}
+                      paramsUserId={userId}
+                      currentUser={auth.user}
+                      isAuthenticated={auth.isAuthenticated}
+                    />
+                  </Link>
+                )
               )
             )}
           </div>
