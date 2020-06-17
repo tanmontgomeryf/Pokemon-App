@@ -16,6 +16,7 @@ import {
   DELETE_USER_SUCCESS,
   DELETE_USER_ERROR,
 } from './authTypes';
+import { setAlert } from '../index';
 
 const fetchingAuth = () => ({
   type: FETCHING_AUTH,
@@ -95,7 +96,6 @@ export const fetchUserInfo = () => async (dispatch) => {
 
 export const register = (formData) => async (dispatch) => {
   dispatch(registering());
-  console.log(formData);
   const data = JSON.stringify(formData);
   try {
     await axios.post('/user', data, {
@@ -104,6 +104,7 @@ export const register = (formData) => async (dispatch) => {
     dispatch(fetchUserInfo());
   } catch (error) {
     dispatch(authError(error.message));
+    dispatch(setAlert('Email has already been taken', 'danger'));
   }
 };
 
@@ -117,6 +118,7 @@ export const login = (formData) => async (dispatch) => {
     dispatch(fetchUserInfo());
   } catch (error) {
     dispatch(authError(error.message));
+    dispatch(setAlert('Invalid username/password', 'danger'));
   }
 };
 
@@ -127,6 +129,7 @@ export const logout = () => async (dispatch) => {
     dispatch({
       type: LOGOUT_SUCCESS,
     });
+    dispatch(setAlert('Succesfully Logged out', 'success'));
   } catch (error) {
     dispatch(authError(error.message));
   }
@@ -144,6 +147,7 @@ export const addPokemonToTeam = (userId, pokemonId, pokemonDetails) => async (
       headers: { 'Content-Type': 'application/json' },
     });
     dispatch(addPokemonSuccess(response.data));
+    dispatch(setAlert('Succesfully Added', 'success'));
   } catch (error) {
     dispatch(addPokemonError(error));
   }
@@ -153,6 +157,7 @@ export const deletePokemon = (userId, pokemonId) => async (dispatch) => {
   try {
     const response = await axios.delete(`/user/${userId}/pokemon/${pokemonId}`);
     dispatch(deletePokemonSuccess(response.data));
+    dispatch(setAlert('Succesfully deleted', 'success'));
   } catch (error) {
     dispatch(deletePokemonError(error));
   }

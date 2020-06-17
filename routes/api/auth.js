@@ -95,7 +95,7 @@ router.post(
     try {
       const user = await User.findOne({ email });
 
-      if (!user) return res.status(401).send('Invalid Email/Password');
+      if (!user) return res.status(401).json('Invalid Email/Password');
 
       const isMatch = await bcrypt.compare(password, user.password);
 

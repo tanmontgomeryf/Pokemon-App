@@ -12,6 +12,7 @@ import ScrollUp from 'react-scroll-up';
 import Loader from '../Layouts/Loader';
 import './PokedexStyles.css';
 import PokedexFilter from './PokedexFilter';
+import Alert from '../Layouts/Alert';
 
 const Pokedex = ({
   pokemon: { loading, pokedex },
@@ -33,6 +34,9 @@ const Pokedex = ({
         fetchGenerationData={fetchGenerationData}
         setFullDex={setFullDex}
       />
+      <div className='Pokedex-alert'>
+        <Alert />
+      </div>
       <InfiniteScroll
         pageStart={0}
         loadMore={() =>

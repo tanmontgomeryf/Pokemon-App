@@ -9,6 +9,11 @@
   align-self: center;
 }
 
+.Trainer > .Trainer-alert {
+  width: 90%;
+  margin: 0 auto;
+}
+
 .buttons.button-delete {
   font-size: 0.6rem;
   margin-bottom: 0;
@@ -57,6 +62,17 @@
 
 .Trainer-cardTitle {
   text-transform: capitalize;
+}
+
+.Trainer-card > p {
+  font-size: 0.8rem;
+  text-align: center;
+  margin: 50px auto 0;
+}
+
+.Trainer-card > p a:hover {
+  color: #bd3736;
+  text-decoration: underline;
 }
 
 .Trainer-pokemonGroup {
@@ -180,5 +196,9 @@
 
   .TrainerMain > .buttons.button-delete {
     margin-top: 30px;
+  }
+
+  .Trainer-card > p {
+    margin: 100px auto 0;
   }
 }

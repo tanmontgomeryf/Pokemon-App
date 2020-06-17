@@ -1,6 +1,6 @@
 import React, { useEffect, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Pokedex from './components/Pokedex/Pokedex';
 import Pokemon from './components/Pokemon/Pokemon';
 import Navbar from './components/Layouts/Navbar';
@@ -11,7 +11,7 @@ import Trainers from './components/Trainers/Trainers';
 import Trainer from './components/Trainer/Trainer';
 import { fetchPokedex, fetchUserInfo } from './redux';
 import './styles/App.css';
-import Loader from './components/Layouts/Loader';
+import NotFound from './components/Layouts/NotFound';
 
 const App = () => {
   const isLanding = useSelector((state) => state.isLanding);
@@ -26,7 +26,6 @@ const App = () => {
       {!isLanding.isLanding && <Navbar />}
       <Switch>
         <Route exact path='/' render={() => <Landing />} />
-        <Route exact path='/loader' render={() => <Loader />} />
         <Route exact path='/login' render={() => <Login />} />
         <Route exact path='/register' render={() => <Register />} />
         <Route exact path='/trainers' render={() => <Trainers />} />
@@ -42,10 +41,15 @@ const App = () => {
         />
         <Route
           exact
+          path='/notFound'
+          render={(props) => <NotFound {...props} />}
+        />
+        <Route
+          exact
           path='/:idOrName'
           render={(props) => <Pokemon {...props} />}
         />
-        <Redirect to='/pokedex' />
+        <Route render={(props) => <NotFound {...props} />} />
       </Switch>
     </Fragment>
   );

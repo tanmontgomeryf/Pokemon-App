@@ -31,7 +31,6 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     }
-    console.log(req.body);
     const { username, email, password } = req.body;
 
     try {
@@ -66,7 +65,9 @@ router.post(
       console.error(error.message);
 
       if (error.keyPattern.username)
-        return res.status(500).send('Username has been taken');
+        return res
+          .status(500)
+          .json({ msg: 'Username has been taken', err: error.message });
 
       if (error.keyPattern.email)
         return res.status(500).send('Email has been taken');

@@ -6,13 +6,15 @@ import PokemonBaseStats from './PokemonBaseStats';
 import PokemonMain from './PokemonMain';
 import PokemonDescription from './PokemonDescription';
 import Loader from '../Layouts/Loader';
+import NotFound from '../Layouts/NotFound';
 import { checkRequestPokemon } from '../../helpers';
 import './PokemonStyles.css';
+import Alert from '../Layouts/Alert';
 
 const Pokemon = ({
   pokemon: { loading, pokemon, error },
   auth,
-  history: { goBack },
+  history,
   match: {
     params: { idOrName },
   },
@@ -25,7 +27,7 @@ const Pokemon = ({
     fetchPokemon(checkRequestPokemon(idOrName));
   }, [fetchPokemon, idOrName, notLandingPage]);
 
-  const handleClick = () => goBack();
+  const handleClick = () => history.goBack();
 
   const handleAddPokemon = () => {
     const pokemonDetails = {
@@ -51,9 +53,14 @@ const Pokemon = ({
   }
 
   return loading || pokemon === null ? (
-    <Loader />
+    !loading && pokemon === null ? (
+      <NotFound history={history} />
+    ) : (
+      <Loader />
+    )
   ) : (
     <div className='Pokemon'>
+      <Alert />
       <div className='Pokemon-buttons'>
         <div onClick={handleClick} className='buttons type-primary'>
           Go Back

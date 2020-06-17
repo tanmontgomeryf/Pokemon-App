@@ -1,8 +1,25 @@
 .Register {
+  width: 100%;
+  padding-top: 20vh;
+}
+
+.Register-alert {
+  width: 80%;
+}
+
+.Register-alert .Alert .Alert-alert {
+  height: unset;
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 7.5px 15px 7.5px 12px;
+  font-size: 0.8rem;
+}
+
+.Register-group {
   width: 80%;
   max-width: 400px;
-  height: 60%;
-  margin: 25vh auto 0;
+  height: 70vh;
+  margin: 0 auto;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
@@ -10,16 +27,16 @@
   justify-content: center;
 }
 
-.Register > h4 {
+.Register-group > h4 {
   margin-bottom: 40px;
 }
 
-.Register > p {
+.Register-group > p {
   font-size: 0.5rem;
   margin-top: 20px;
 }
 
-.Register p:hover a {
+.Register-group p:hover a {
   color: #bd3736;
   text-decoration: underline;
 }

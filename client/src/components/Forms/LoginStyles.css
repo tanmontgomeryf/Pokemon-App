@@ -1,8 +1,25 @@
 .Login {
+  width: 100%;
+  padding-top: 25vh;
+}
+
+.Login-alert {
+  width: 80%;
+}
+
+.Login-alert .Alert .Alert-alert {
+  height: unset;
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 7.5px 15px 7.5px 12px;
+  font-size: 0.8rem;
+}
+
+.Login-group {
   width: 80%;
   max-width: 400px;
-  height: 50%;
-  margin: 25vh auto 0;
+  height: 50vh;
+  margin: 0 auto;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
@@ -10,16 +27,16 @@
   justify-content: center;
 }
 
-.Login > h4 {
+.Login-group > h4 {
   margin-bottom: 40px;
 }
 
-.Login > p {
+.Login-group > p {
   font-size: 0.5rem;
   margin-top: 20px;
 }
 
-.Login p:hover a {
+.Login-group p:hover a {
   color: #bd3736;
   text-decoration: underline;
 }
