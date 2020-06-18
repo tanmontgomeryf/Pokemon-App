@@ -30,7 +30,7 @@ const Trainer = ({
     history.push('/pokedex');
   };
   return users.isLoading || users.user === null ? (
-    !users.isLoading && users.user === null ? (
+    !users.isLoading && users.user === null && users.error !== null ? (
       <NotFound history={history} />
     ) : (
       <Loader />

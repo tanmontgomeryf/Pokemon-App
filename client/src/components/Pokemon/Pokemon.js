@@ -53,7 +53,7 @@ const Pokemon = ({
   }
 
   return loading || pokemon === null ? (
-    !loading && pokemon === null ? (
+    !loading && pokemon === null && error !== null ? (
       <NotFound history={history} />
     ) : (
       <Loader />

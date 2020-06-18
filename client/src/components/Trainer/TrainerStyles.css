@@ -23,13 +23,13 @@
 
 .Trainer-card {
   width: 90%;
+  height: 100%;
   margin: 0 auto 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  overflow: hidden;
 }
 
 .TrainerMain {
@@ -77,19 +77,22 @@
 
 .Trainer-pokemonGroup {
   width: 90%;
+  height: 100%;
   display: grid;
-  grid-template-columns: 100%;
-  grid-gap: 3%;
+  grid-template-columns: minmax(auto, 100%);
+  grid-gap: 25px;
   justify-items: center;
 }
 
 .Trainer-pokemonGroup a {
   width: 100%;
+  height: 100%;
   max-width: 350px;
 }
 
 .TrainerPokemon {
   width: 100%;
+  height: 100%;
   max-width: 350px;
   display: flex;
   flex-wrap: wrap;

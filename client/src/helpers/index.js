@@ -32,20 +32,31 @@ export const totalBaseStats = (stats) => {
 };
 
 //clean pokemon description data
-export const cleanDescription = (description, versionA, VersionB) => {
-  return description
-    .filter(
-      (description) =>
-        (description.language.name === 'en' &&
-          description.version.name === versionA) ||
-        (description.language.name === 'en' &&
-          description.version.name === VersionB)
-    )
+export const cleanDescription = (description) => {
+  const pokemonDescription = description
+    .filter((description) => description.language.name === 'en')
     .map((description) => ({
       version: description.version.name,
       description: description.flavor_text,
     }));
+
+  return pokemonDescription.pop();
 };
+
+// export const cleanDescription = (description, versionA, VersionB) => {
+//   return description
+//     .filter(
+//       (description) =>
+//         (description.language.name === 'en' &&
+//           description.version.name === versionA) ||
+//         (description.language.name === 'en' &&
+//           description.version.name === VersionB)
+//     )
+//     .map((description) => ({
+//       version: description.version.name,
+//       description: description.flavor_text,
+//     }));
+// };
 
 //clean evolution data
 export const cleanEvolutionChain = (obj) => {
