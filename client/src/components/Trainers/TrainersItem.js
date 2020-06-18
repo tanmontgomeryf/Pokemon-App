@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { addDefaultTeam, totalTeamPower } from '../../helpers';
+import { addDefaultTeam, totalTeamPower, checkPokemon } from '../../helpers';
 
 const TrainersItem = ({ user }) => {
   return (
@@ -26,7 +26,9 @@ const TrainersItem = ({ user }) => {
               ) : (
                 <div key={pokemon._id} className='TrainersItem-pokemon'>
                   <img
-                    src={`https://img.pokemondb.net/sprites/home/normal/${pokemon.pokemonDetails.name.toLowerCase()}.png`}
+                    src={`https://img.pokemondb.net/sprites/home/normal/${checkPokemon(
+                      pokemon.pokemonDetails.name
+                    ).toLowerCase()}.png`}
                     alt={pokemon.pokemonDetails.name}
                     onError={(e) => {
                       e.target.onerror = null;
@@ -34,14 +36,14 @@ const TrainersItem = ({ user }) => {
                         'https://cdn.bulbagarden.net/upload/a/a1/Substitute_artwork.png';
                     }}
                   />
-                  <p>{pokemon.nickname}</p>
+                  <p>{checkPokemon(pokemon.nickname)}</p>
                   <div className='TrainersItem-typesDiv'>
                     {pokemon.pokemonDetails.types.map((type) => (
                       <div
                         className={`TrainersItem-types type-${type.type.name}`}
                         key={type.type.name}
                       >
-                        {type.type.name}
+                        <p>{type.type.name}</p>
                       </div>
                     ))}
                   </div>

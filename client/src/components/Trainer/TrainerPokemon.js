@@ -45,12 +45,12 @@ const TrainerPokemon = ({
           <p>Nickname:</p>
           {isAuthenticated && currentUser._id === paramsUserId ? (
             <Nickname
-              nickname={nickname}
+              nickname={checkPokemon(nickname)}
               pokemonId={_id}
               currentUserId={currentUser._id}
             />
           ) : (
-            <h4>{nickname}</h4>
+            <h4>{checkPokemon(nickname)}</h4>
           )}
         </div>
 

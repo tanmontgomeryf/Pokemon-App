@@ -1,5 +1,5 @@
 .Trainers {
-  padding-top: 10vh;
+  padding-top: 64px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -99,20 +99,28 @@
 }
 
 .TrainersItem-types {
-  font-weight: 600;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  color: #fff;
-  text-align: center;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-  text-transform: uppercase;
   cursor: default;
   width: 35px;
-  font-size: 5px;
+  height: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .TrainersItem-types:first-child {
-  margin: 0 2.5px;
+  margin-right: 2.5px;
+}
+
+.TrainersItem-types p {
+  font-size: 5px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 600;
+  margin: 0;
+  margin-top: -1px;
 }
 
 @media only screen and (min-width: 650px) {
