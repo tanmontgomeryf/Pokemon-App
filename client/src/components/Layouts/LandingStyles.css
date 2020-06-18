@@ -14,6 +14,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  background-color: #bd3736;
 }
 
 .Landing::after {
@@ -79,6 +80,23 @@
   }
   100% {
     transform: translate(0, 0) rotate(0);
+  }
+}
+
+@media only screen and (min-width: 750px) and (min-height: 1000px) {
+  .Landing {
+    background-size: initial;
+  }
+
+  .Landing-button::before {
+    height: 70px;
+    width: 70px;
+    bottom: calc(50% - 35px);
+    left: calc(50% - 35px);
+  }
+
+  .Landing::after {
+    bottom: 10%;
   }
 }
 
