@@ -62,7 +62,7 @@ const fetchGenerationError = (error) => ({
 export const fetchPokedex = () => async (dispatch) => {
   dispatch(fetchRequest());
   try {
-    const response = await axios.get('/pokemon/pokedex');
+    const response = await axios.get('/api/pokemon/pokedex');
     dispatch(fetchPokedexSuccess(response.data));
   } catch (error) {
     console.log(error);
@@ -72,7 +72,7 @@ export const fetchPokedex = () => async (dispatch) => {
 
 export const fetchMorePokedex = (num) => async (dispatch) => {
   try {
-    const response = await axios.get(`/pokemon/pokedex/${num}`);
+    const response = await axios.get(`/api/pokemon/pokedex/${num}`);
     dispatch(fetchMorePokedexSuccess(response.data));
     dispatch(removeExtraPokemon());
   } catch (error) {
@@ -84,7 +84,7 @@ export const fetchMorePokedex = (num) => async (dispatch) => {
 export const fetchPokemon = (idOrName) => async (dispatch) => {
   dispatch(fetchPokemonRequest());
   try {
-    const response = await axios.get(`/pokemon/${idOrName}`);
+    const response = await axios.get(`/api/pokemon/${idOrName}`);
     dispatch(fetchPokemonSuccess(response.data));
   } catch (error) {
     console.log(error);
@@ -97,7 +97,7 @@ export const fetchGenerationData = (str) => async (dispatch) => {
   const gen = checkGen(str);
   try {
     const response = await axios.get(
-      `/pokemon/pokedex/${gen.num}/${gen.limit}`
+      `/api/pokemon/pokedex/${gen.num}/${gen.limit}`
     );
     dispatch(fetchGenerationSuccess(response.data));
   } catch (error) {

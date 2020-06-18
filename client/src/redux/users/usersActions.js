@@ -39,7 +39,7 @@ const fetchUserError = (error) => ({
 export const fetchUsersData = () => async (dispatch) => {
   dispatch(fetchingUsers());
   try {
-    const response = await axios.get('/user');
+    const response = await axios.get('/api/user');
     dispatch(fetchUsersSuccess(response.data));
   } catch (error) {
     dispatch(fetchUsersError(error));
@@ -49,7 +49,7 @@ export const fetchUsersData = () => async (dispatch) => {
 export const fetchUserData = (userId) => async (dispatch) => {
   dispatch(fecthingUser());
   try {
-    const response = await axios.get(`/user/${userId}`);
+    const response = await axios.get(`/api/user/${userId}`);
     dispatch(fetchUserSuccess(response.data));
   } catch (error) {
     dispatch(fetchUserError(error));

@@ -41,11 +41,6 @@ const App = () => {
         />
         <Route
           exact
-          path='/notFound'
-          render={(props) => <NotFound {...props} />}
-        />
-        <Route
-          exact
           path='/:idOrName'
           render={(props) => <Pokemon {...props} />}
         />

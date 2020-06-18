@@ -76,9 +76,8 @@ const Trainer = ({
                   isAuthenticated={auth.isAuthenticated}
                 />
               ) : (
-                <Link to={`/${pokemon.pokemonDetails.id}`}>
+                <Link key={pokemon._id} to={`/${pokemon.pokemonDetails.id}`}>
                   <TrainerPokemon
-                    key={pokemon._id}
                     pokemon={pokemon}
                     paramsUserId={userId}
                     currentUser={auth.user}

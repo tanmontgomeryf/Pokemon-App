@@ -5,8 +5,8 @@ import './AlertStyles.css';
 const Alert = ({ alerts }) =>
   alerts.length > 0 && (
     <div className='Alert'>
-      {alerts.map((alert) => (
-        <div className={`Alert-alert alert-${alert.alertType}`}>
+      {alerts.map((alert, i) => (
+        <div key={i} className={`Alert-alert alert-${alert.alertType}`}>
           {alert.msg}
         </div>
       ))}

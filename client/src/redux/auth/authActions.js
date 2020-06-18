@@ -87,7 +87,7 @@ const deleteUserError = (error) => ({
 export const fetchUserInfo = () => async (dispatch) => {
   dispatch(fetchingAuth());
   try {
-    const response = await axios.get('/auth');
+    const response = await axios.get('/api/auth');
     dispatch(fetchUserSuccess(response.data));
   } catch (error) {
     dispatch(authError(error.message));
@@ -98,7 +98,7 @@ export const register = (formData) => async (dispatch) => {
   dispatch(registering());
   const data = JSON.stringify(formData);
   try {
-    await axios.post('/user', data, {
+    await axios.post('/api/user', data, {
       headers: { 'Content-Type': 'application/json' },
     });
     dispatch(fetchUserInfo());
@@ -112,7 +112,7 @@ export const login = (formData) => async (dispatch) => {
   dispatch(loggingin());
   const data = JSON.stringify(formData);
   try {
-    await axios.post('/auth', data, {
+    await axios.post('/api/auth', data, {
       headers: { 'Content-Type': 'application/json' },
     });
     dispatch(fetchUserInfo());
@@ -125,7 +125,7 @@ export const login = (formData) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   dispatch(loggingout());
   try {
-    await axios.get('user/logout');
+    await axios.get('api/user/logout');
     dispatch({
       type: LOGOUT_SUCCESS,
     });
@@ -143,7 +143,7 @@ export const addPokemonToTeam = (userId, pokemonId, pokemonDetails) => async (
       pokemonDetails,
       id: pokemonId,
     };
-    const response = await axios.post(`/user/${userId}`, data, {
+    const response = await axios.post(`/api/user/${userId}`, data, {
       headers: { 'Content-Type': 'application/json' },
     });
     dispatch(addPokemonSuccess(response.data));
@@ -155,7 +155,9 @@ export const addPokemonToTeam = (userId, pokemonId, pokemonDetails) => async (
 
 export const deletePokemon = (userId, pokemonId) => async (dispatch) => {
   try {
-    const response = await axios.delete(`/user/${userId}/pokemon/${pokemonId}`);
+    const response = await axios.delete(
+      `/api/user/${userId}/pokemon/${pokemonId}`
+    );
     dispatch(deletePokemonSuccess(response.data));
     dispatch(setAlert('Succesfully deleted', 'success'));
   } catch (error) {
@@ -171,7 +173,7 @@ export const editNickName = (userId, pokemonId, nickname) => async (
   };
   try {
     const response = await axios.put(
-      `/user/${userId}/pokemon/${pokemonId}`,
+      `/api/user/${userId}/pokemon/${pokemonId}`,
       data,
       { headers: { 'Content-Type': 'application/json' } }
     );
@@ -184,7 +186,7 @@ export const editNickName = (userId, pokemonId, nickname) => async (
 export const deleteUser = (userId) => async (dispatch) => {
   if (window.confirm('Are you sure? this can NOT be undone!')) {
     try {
-      await axios.delete(`/user/${userId}`);
+      await axios.delete(`/api/user/${userId}`);
       dispatch(deleteUserSuccess(userId));
     } catch (error) {
       dispatch(deleteUserError(error));
